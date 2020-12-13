@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react'
+import { connect } from 'react-redux'
 import {
   Redirect,
   Route,
@@ -8,14 +9,14 @@ import { CContainer, CFade } from '@coreui/react'
 
 // routes config
 import routes from '../routes'
-  
+
 const loading = (
   <div className="pt-3 text-center">
     <div className="sk-spinner sk-spinner-pulse"></div>
   </div>
 )
 
-const TheContent = () => {
+const TheContent = ({ auth }) => {
   return (
     <main className="c-main">
       <CContainer fluid>
@@ -35,7 +36,7 @@ const TheContent = () => {
                   )} />
               )
             })}
-            <Redirect from="/" to="/dashboard" />
+            <Redirect from="/" to={auth || true ? '/dashboard' : '/login'} />
           </Switch>
         </Suspense>
       </CContainer>
@@ -43,4 +44,7 @@ const TheContent = () => {
   )
 }
 
-export default React.memo(TheContent)
+const mapStateToProps = ({ auth }) => ({ auth })
+const ConnectedComp = connect(mapStateToProps)(TheContent)
+
+export default React.memo(ConnectedComp)
