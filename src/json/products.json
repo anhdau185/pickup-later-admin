@@ -1,0 +1,132 @@
+{
+  "count": 17,
+  "pages": 2,
+  "offset": 0,
+  "perPage": 10,
+  "page": 1,
+  "prevPage": 1,
+  "nextPage": 2,
+  "records": {
+    "products": [{
+        "id": 1011,
+        "name": "Cơm sườn",
+        "title": "Cơm sườn",
+        "price": 30000,
+        "salePrice": 30000,
+        "imageUrl": "",
+        "freshFood": true,
+        "status": "ACTIVE",
+        "createdAt": 1602196140406,
+        "updatedAt": 1607435597180
+      },
+      {
+        "id": 1006,
+        "name": "Bún thịt nướng",
+        "title": "Bún thịt nướng",
+        "price": 30000,
+        "salePrice": 30000,
+        "imageUrl": "",
+        "freshFood": true,
+        "status": "ACTIVE",
+        "createdAt": 1602195989124,
+        "updatedAt": 1607436013129
+      },
+      {
+        "id": 1010,
+        "name": "Sting",
+        "title": "Nước tăng lực Sting",
+        "price": 10000,
+        "salePrice": 10000,
+        "imageUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/361/770/products/nuoc-tang-luc-sting-dau-lon-330ml.jpg?v=1570676502267",
+        "freshFood": false,
+        "status": "ACTIVE",
+        "createdAt": 1602196140406,
+        "updatedAt": 1607348162060
+      },
+      {
+        "id": 1002,
+        "name": "Cafe sữa đá (size vừa)",
+        "title": "Cafe sữa đá (size vừa)",
+        "price": 15000,
+        "salePrice": 15000,
+        "imageUrl": "https://epicure.vn/wp-content/uploads/2017/08/may-rang-xay-cafe-tu-dong.jpg",
+        "freshFood": true,
+        "status": "ACTIVE",
+        "createdAt": 1602195989124,
+        "updatedAt": 1607348162063
+      },
+      {
+        "id": 1004,
+        "name": "Redbull",
+        "title": "Nước tăng lực Redbull",
+        "price": 15000,
+        "salePrice": 15000,
+        "imageUrl": "https://cdn.tgdd.vn/Products/Images/3226/76513/bhx/nuoc-tang-luc-redbull-lon-250ml-15112018162747.JPG",
+        "freshFood": false,
+        "status": "ACTIVE",
+        "createdAt": 1602195989124,
+        "updatedAt": 1607348162066
+      },
+      {
+        "id": 1013,
+        "name": "Gỏi cuốn",
+        "title": "Gỏi cuốn",
+        "price": 20000,
+        "salePrice": 20000,
+        "imageUrl": "",
+        "freshFood": true,
+        "status": "ACTIVE",
+        "createdAt": 1602196140406,
+        "updatedAt": 1607438912644
+      },
+      {
+        "id": 1012,
+        "name": "Bún bò",
+        "title": "Bún bò",
+        "price": 30000,
+        "salePrice": 30000,
+        "imageUrl": "",
+        "freshFood": true,
+        "status": "ACTIVE",
+        "createdAt": 1602196140406,
+        "updatedAt": 1607352894336
+      },
+      {
+        "id": 1007,
+        "name": "Bò lát lôt",
+        "title": "Bò lá lốt",
+        "price": 15000,
+        "salePrice": 15000,
+        "imageUrl": "",
+        "freshFood": true,
+        "status": "ACTIVE",
+        "createdAt": 1602195989124,
+        "updatedAt": 1607439585057
+      },
+      {
+        "id": 1001,
+        "name": "Nước Aquafina 500ml",
+        "title": "Nước Aquafina 500ml",
+        "price": 5000,
+        "salePrice": 5000,
+        "imageUrl": "",
+        "freshFood": false,
+        "status": "ACTIVE",
+        "createdAt": 1606955383508,
+        "updatedAt": 1606955383508
+      },
+      {
+        "id": 1003,
+        "name": "Cafe sữa đá (size lớn)",
+        "title": "Cafe sữa đá (size lớn)",
+        "price": 20000,
+        "salePrice": 20000,
+        "imageUrl": "https://epicure.vn/wp-content/uploads/2017/08/may-rang-xay-cafe-tu-dong.jpg",
+        "freshFood": true,
+        "status": "ACTIVE",
+        "createdAt": 1602195989124,
+        "updatedAt": 1602195989124
+      }
+    ]
+  }
+}

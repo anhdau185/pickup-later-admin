@@ -1,0 +1,10 @@
+{
+  "id": 19,
+  "user_name": "admin",
+  "phone_number": "+84977765121",
+  "address": "HCM City",
+  "type": "ADMIN",
+  "status": "ACTIVE",
+  "lastest_login_at": 1607868289531,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJVSVQgU0hPUCIsInN0b3JlX2lkIjoiMTAwMCIsImV4cCI6MTYwODMwMDI4OX0.x7fmeVVsQBhbIavVZCf1XP4nO_VHcjJiF4mDWVTaHMc"
+}

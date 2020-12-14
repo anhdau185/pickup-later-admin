@@ -1,0 +1,10 @@
+{
+  "id": 20,
+  "user_name": "admin_anhddv",
+  "phone_number": "+84352305969",
+  "address": "HCM City",
+  "type": "STORE_MANAGER",
+  "status": "ACTIVE",
+  "lastest_login_at": 1607868179934,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnQiOiJVSVQgU0hPUCIsInN0b3JlX2lkIjoiMTAwMCIsImV4cCI6MTYwODMwMDE3OX0.bJMtZJ75rKOB5WiNm7eOcHZpPlJZzjJObusfYtTWpeQ"
+}

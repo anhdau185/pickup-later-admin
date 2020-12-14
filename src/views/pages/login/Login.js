@@ -1,5 +1,6 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter, Redirect } from 'react-router-dom';
 import {
   CButton,
   CCard,
@@ -13,18 +14,19 @@ import {
   CInputGroupPrepend,
   CInputGroupText,
   CRow
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import { authenticate } from 'redux/actions'
+} from '@coreui/react';
+import CIcon from '@coreui/icons-react';
+import { UserType } from 'enums';
+import { authenticate } from 'redux/actions';
 
 class Login extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       username: '',
       password: ''
-    }
-    this.onSubmit = this.onSubmit.bind(this)
+    };
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onSubmit() {
@@ -32,13 +34,34 @@ class Login extends React.Component {
       this.props.authenticate({
         userName: this.state.username,
         password: this.state.password
-      })
+      });
     } else {
-      window.alert('Chưa nhập tên đăng nhập/mật khẩu.')
+      window.alert('Chưa nhập tên đăng nhập/mật khẩu.');
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.auth && this.props.auth !== prevProps.auth) {
+      const { type, error } = this.props.auth;
+      if (!error && type === UserType.ADMIN.value) {
+        this.props.history.replace('/');
+      } else if (!error && type === UserType.STORE_MANAGER.value) {
+        this.props.history.replace('/');
+      } else {
+        window.alert('Tên đăng nhập hoặc mật khẩu không đúng.');
+      }
     }
   }
 
   render() {
+    if (this.props.auth && this.props.auth.type === UserType.ADMIN.value) {
+      return <Redirect to="/" />;
+    }
+
+    if (this.props.auth && this.props.auth.type === UserType.STORE_MANAGER.value) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <div className="c-app c-default-layout flex-row align-items-center">
         <CContainer>
@@ -92,11 +115,13 @@ class Login extends React.Component {
           </CRow>
         </CContainer>
       </div>
-    )
+    );
   }
 }
 
-const mapDispatchToProps = { authenticate }
-const ConnectedComp = connect(null, mapDispatchToProps)(Login)
+const LoginWithRouter = withRouter(Login);
+const mapStateToProps = ({ auth }) => ({ auth });
+const mapDispatchToProps = { authenticate };
+const ConnectedComp = connect(mapStateToProps, mapDispatchToProps)(LoginWithRouter);
 
-export default ConnectedComp
+export default ConnectedComp;

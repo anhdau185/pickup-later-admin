@@ -6,6 +6,7 @@ import {
   Switch
 } from 'react-router-dom'
 import { CContainer, CFade } from '@coreui/react'
+import { UserType } from 'enums'
 
 // routes config
 import routes from '../routes'
@@ -16,7 +17,7 @@ const loading = (
   </div>
 )
 
-const TheContent = ({ auth }) => {
+const TheContent = ({ loggedIn }) => {
   return (
     <main className="c-main">
       <CContainer fluid>
@@ -36,7 +37,7 @@ const TheContent = ({ auth }) => {
                   )} />
               )
             })}
-            <Redirect from="/" to={auth || true ? '/dashboard' : '/login'} />
+            <Redirect from="/" to={loggedIn ? '/dashboard' : '/login'} />
           </Switch>
         </Suspense>
       </CContainer>
@@ -44,7 +45,10 @@ const TheContent = ({ auth }) => {
   )
 }
 
-const mapStateToProps = ({ auth }) => ({ auth })
+const mapStateToProps = ({ auth }) => ({
+  loggedIn: !!auth && (auth.type === UserType.ADMIN.value || auth.type === UserType.STORE_MANAGER.value)
+})
+
 const ConnectedComp = connect(mapStateToProps)(TheContent)
 
 export default React.memo(ConnectedComp)
