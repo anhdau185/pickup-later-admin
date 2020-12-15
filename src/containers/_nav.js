@@ -11,23 +11,21 @@ export default [
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Theme']
+    _children: ['Products']
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Colors',
-    to: '/theme/colors',
-    icon: 'cil-drop',
+    name: 'All products',
+    to: '/products'
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Typography',
-    to: '/theme/typography',
-    icon: 'cil-pencil',
+    name: 'All combos',
+    to: '/combos'
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Components']
+    _children: ['Product Groups']
   },
   {
     _tag: 'CSidebarNavDropdown',
@@ -221,7 +219,7 @@ export default [
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Extras'],
+    _children: ['Store Menus'],
   },
   {
     _tag: 'CSidebarNavDropdown',
@@ -268,7 +266,7 @@ export default [
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Labels']
+    _children: ['Menus']
   },
   {
     _tag: 'CSidebarNavItem',

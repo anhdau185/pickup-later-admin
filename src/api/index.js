@@ -5,7 +5,8 @@ const host = '42ad4c13fbfb.ap.ngrok.io';
 const basePath = '/api/v1';
 const paths = {
   get: {
-    orders: '/orders'
+    orders: '/orders',
+    products: '/products'
   },
   post: {
     orders: '/orders',
@@ -83,6 +84,14 @@ export const authenticateUser = async authToken => {
   const apiPath = getApiPath(paths.post.authenticate);
   let configurations = getConfigurations(httpMethods.POST);
   configurations.headers['Authorization'] = authToken;
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const getProducts = async params => {
+  const apiPath = getApiPath(paths.get.products, params);
+  let configurations = getConfigurations(httpMethods.GET);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
   return data;
