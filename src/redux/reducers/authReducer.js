@@ -1,7 +1,9 @@
 import {
     AUTHENTICATE_START,
     AUTHENTICATE_SUCCESS,
-    AUTHENTICATE_FAILURE
+    AUTHENTICATE_FAILURE,
+    RETRIEVE_AUTH,
+    LOGOUT
 } from '../actions/types';
 
 const authReducer = (prevState = null, action) => {
@@ -12,6 +14,10 @@ const authReducer = (prevState = null, action) => {
             return action.auth;
         case AUTHENTICATE_FAILURE:
             return prevState;
+        case RETRIEVE_AUTH:
+            return action.auth || prevState;
+        case LOGOUT:
+            return null;
         default:
             return prevState;
     }

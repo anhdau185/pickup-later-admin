@@ -1,0 +1,12 @@
+{
+  "id": 1001,
+  "name": "Nước Aquafina 500ml",
+  "title": "Nước Aquafina 500ml",
+  "price": 5000,
+  "salePrice": 5000,
+  "imageUrl": "",
+  "freshFood": false,
+  "status": "ACTIVE",
+  "createdAt": 1606955383508,
+  "updatedAt": 1606955383508
+}

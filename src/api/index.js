@@ -1,7 +1,7 @@
 import { schemes, httpMethods, headers } from './staticEntries';
 
 const scheme = schemes.HTTPS;
-const host = '42ad4c13fbfb.ap.ngrok.io';
+const host = 'd4a914b554f5.ngrok.io';
 const basePath = '/api/v1';
 const paths = {
   get: {
@@ -11,7 +11,8 @@ const paths = {
   post: {
     orders: '/orders',
     login: '/mobile/users/login',
-    authenticate: '/start_session'
+    authenticate: '/start_session',
+    products: '/products'
   }
 };
 
@@ -37,13 +38,16 @@ function getApiPath(path, params = null, hasBasePath = true) {
   return apiPath;
 }
 
-function getConfigurations(method, data = null) {
+function getConfigurations(method, data = null, token = null) {
   let configurations = {
     method,
     headers
   };
   if (data) {
     configurations.body = JSON.stringify(data);
+  }
+  if (token) {
+    configurations.headers['Authorization'] = token;
   }
   return configurations;
 }
@@ -82,16 +86,34 @@ export const accountLogin = async authentication => {
 
 export const authenticateUser = async authToken => {
   const apiPath = getApiPath(paths.post.authenticate);
-  let configurations = getConfigurations(httpMethods.POST);
-  configurations.headers['Authorization'] = authToken;
+  let configurations = getConfigurations(httpMethods.POST, null, authToken);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
   return data;
 };
 
 export const getProducts = async params => {
-  const apiPath = getApiPath(paths.get.products, params);
-  let configurations = getConfigurations(httpMethods.GET);
+  const apiPath = getApiPath(paths.get.products, {
+    page: params.page,
+    perPage: params.perPage
+  });
+  let configurations = getConfigurations(httpMethods.GET, null, params.token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const getProductById = async params => {
+  const apiPath = getApiPath(paths.get.products, params.productId);
+  let configurations = getConfigurations(httpMethods.GET, null, params.token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const updateProduct = async params => {
+  const apiPath = getApiPath(paths.post.products, params.productId);
+  let configurations = getConfigurations(httpMethods.PUT, params.productData, params.token);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
   return data;

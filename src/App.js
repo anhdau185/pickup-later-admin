@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { HashRouter, Route, Switch } from 'react-router-dom';
+import { retrieveAuth } from './redux/actions';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/style.scss';
 
 const loading = (
@@ -18,6 +21,17 @@ const Page404 = React.lazy(() => import('./views/pages/page404/Page404'));
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'));
 
 class App extends Component {
+  componentDidMount() {
+    this.props.retrieveAuth();
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.auth && nextProps.auth !== this.props.auth && !nextProps.auth.error) {
+      window.localStorage.setItem('storedAuth', JSON.stringify(nextProps.auth));
+    }
+    return false;
+  }
+
   render() {
     return (
       <HashRouter>
@@ -35,4 +49,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({ auth }) => ({ auth });
+const mapDispatchToProps = { retrieveAuth };
+const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
+
+export default ConnectedApp;

@@ -3,9 +3,8 @@ import {
     FETCH_PRODUCTS_SUCCESS,
     FETCH_PRODUCTS_FAILURE
 } from '../actions/types';
-import products from 'json/products.json';
 
-const productsReducer = (prevState = products, action) => {
+const productsReducer = (prevState = null, action) => {
     switch (action.type) {
         case FETCH_PRODUCTS_START:
             return prevState;
