@@ -1,12 +1,13 @@
 import { schemes, httpMethods, headers } from './staticEntries';
 
 const scheme = schemes.HTTPS;
-const host = 'd4a914b554f5.ngrok.io';
+const host = '20ebac350d92.ngrok.io';
 const basePath = '/api/v1';
 const paths = {
   get: {
     orders: '/orders',
-    products: '/products'
+    products: '/products',
+    stores: '/stores'
   },
   post: {
     orders: '/orders',
@@ -114,6 +115,33 @@ export const getProductById = async params => {
 export const updateProduct = async params => {
   const apiPath = getApiPath(paths.post.products, params.productId);
   let configurations = getConfigurations(httpMethods.PUT, params.productData, params.token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const getStores = async params => {
+  const apiPath = getApiPath(paths.get.stores, {
+    page: params.page,
+    perPage: params.perPage
+  });
+  let configurations = getConfigurations(httpMethods.GET, null, params.token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const getStoreById = async params => {
+  const apiPath = getApiPath(paths.get.stores, params.storeId);
+  let configurations = getConfigurations(httpMethods.GET, null, params.token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const updateStore = async params => {
+  const apiPath = getApiPath(paths.get.stores, params.storeId);
+  let configurations = getConfigurations(httpMethods.GET, null, params.token);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
   return data;
