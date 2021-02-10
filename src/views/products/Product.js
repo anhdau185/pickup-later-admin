@@ -113,9 +113,7 @@ class Product extends React.Component {
                 <CRow>
                     <CCol>
                         <CCard>
-                            <CCardHeader>
-                                Product ID: {this.productId}
-                            </CCardHeader>
+                            <CCardHeader>Product ID: {this.productId}</CCardHeader>
                             <CCardBody>
                                 <table className="table table-striped table-hover">
                                     <tbody>

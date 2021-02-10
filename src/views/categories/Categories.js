@@ -9,37 +9,36 @@ import {
     CRow,
     CPagination
 } from '@coreui/react';
-import { getProducts } from 'api';
+import { getCategories } from 'api';
 import DataTable from 'components/DataTable';
-// import prods from 'json/products.json';
 
-const Products = ({ authToken }) => {
+const Categories = ({ authToken }) => {
     const history = useHistory();
     const queryPage = useLocation().search.match(/page=([0-9]+)/, '');
     const [page, setPage] = useState(queryPage && queryPage[1] ? parseInt(queryPage[1]) : 1);
-    const [products, setProducts] = useState(null);
+    const [categories, setCategories] = useState(null);
 
     useEffect(() => {
-        getProducts({
+        getCategories({
             page,
             perPage: 10,
             token: authToken
         })
-            .then(resp => setProducts(resp))
+            .then(resp => setCategories(resp))
             .catch(err => console.error(err));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page]);
 
-    if (products && !products.error) {
+    if (categories && !categories.error) {
         return (
             <CRow>
                 <CCol>
                     <CCard>
-                        <CCardHeader>Products</CCardHeader>
+                        <CCardHeader>Categories</CCardHeader>
                         <CCardBody>
-                            <DataTable fields={['ID', 'Name', 'Title', 'Price', 'Sale price', 'Fresh food', 'Status']}>
-                                {products.records.products.map(
-                                    item => <DataTable.ProductRow item={item} onRowClick={item => history.push(`/products/${item.id}`)} />
+                            <DataTable fields={['ID', 'Name', 'Title']}>
+                                {categories.records.groups.map(
+                                    item => <DataTable.CategoryRow item={item} onRowClick={item => history.push(`/categories/${item.id}`)} />
                                 )}
                             </DataTable>
                             <CPagination
@@ -47,10 +46,10 @@ const Products = ({ authToken }) => {
                                 onActivePageChange={newPage => {
                                     if (newPage !== page) {
                                         setPage(newPage);
-                                        history.push(`/products?page=${newPage}`);
+                                        history.push(`/categories?page=${newPage}`);
                                     }
                                 }}
-                                pages={products ? products.pages : 1}
+                                pages={categories ? categories.pages : 1}
                                 doubleArrows={false}
                                 align="center"
                             />
@@ -65,6 +64,6 @@ const Products = ({ authToken }) => {
 };
 
 const mapStateToProps = ({ auth }) => ({ authToken: auth ? auth.token : '' });
-const ConnectedComp = connect(mapStateToProps)(Products);
+const ConnectedComp = connect(mapStateToProps)(Categories);
 
 export default ConnectedComp;

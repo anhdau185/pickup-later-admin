@@ -24,6 +24,11 @@ export default [
     to: '/combos'
   },
   {
+    _tag: 'CSidebarNavItem',
+    name: 'All categories',
+    to: '/categories'
+  },
+  {
     _tag: 'CSidebarNavTitle',
     _children: ['Product Groups']
   },

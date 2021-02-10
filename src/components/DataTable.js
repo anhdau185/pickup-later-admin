@@ -11,7 +11,20 @@ const getBadge = status => {
     }
 };
 
-const DataTableRow = ({ item, onRowClick }) => {
+const DataTable = ({ fields, children }) => {
+    return (
+        <Table striped bordered hover>
+            <thead>
+                <tr>
+                    {fields.map((field, index) => <th key={index}>{field}</th>)}
+                </tr>
+            </thead>
+            <tbody>{children}</tbody>
+        </Table>
+    );
+};
+
+DataTable.ProductRow = ({ item, onRowClick }) => {
     const { id, name, title, price, salePrice, freshFood, status } = item;
     return (
         <tr key={id} onClick={() => onRowClick(item)} style={{ cursor: 'pointer' }}>
@@ -30,18 +43,14 @@ const DataTableRow = ({ item, onRowClick }) => {
     );
 };
 
-const DataTable = ({ items, fields, onRowClick }) => {
+DataTable.CategoryRow = ({ item, onRowClick }) => {
+    const { id, name, title } = item;
     return (
-        <Table striped bordered hover>
-            <thead>
-                <tr>
-                    {fields.map((field, index) => <th key={index}>{field}</th>)}
-                </tr>
-            </thead>
-            <tbody>
-                {items.map(item => <DataTableRow item={item} onRowClick={onRowClick} />)}
-            </tbody>
-        </Table>
+        <tr key={id} onClick={() => onRowClick(item)} style={{ cursor: 'pointer' }}>
+            <td>{id}</td>
+            <td><b>{name}</b></td>
+            <td>{title}</td>
+        </tr>
     );
 };
 

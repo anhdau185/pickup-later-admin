@@ -1,19 +1,21 @@
 import { schemes, httpMethods, headers } from './staticEntries';
 
 const scheme = schemes.HTTPS;
-const host = '20ebac350d92.ngrok.io';
+const host = 'def4867b084a.ngrok.io';
 const basePath = '/api/v1';
 const paths = {
   get: {
     orders: '/orders',
     products: '/products',
-    stores: '/stores'
+    stores: '/stores',
+    groups: '/groups'
   },
   post: {
     orders: '/orders',
     login: '/mobile/users/login',
     authenticate: '/start_session',
-    products: '/products'
+    products: '/products',
+    groups: '/groups'
   }
 };
 
@@ -142,6 +144,30 @@ export const getStoreById = async params => {
 export const updateStore = async params => {
   const apiPath = getApiPath(paths.get.stores, params.storeId);
   let configurations = getConfigurations(httpMethods.GET, null, params.token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const getCategories = async ({ page, perPage, token }) => {
+  const apiPath = getApiPath(paths.get.groups, { page, perPage });
+  let configurations = getConfigurations(httpMethods.GET, null, token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const getCategoryById = async ({ categoryId, token }) => {
+  const apiPath = getApiPath(paths.get.groups, categoryId);
+  let configurations = getConfigurations(httpMethods.GET, null, token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const updateCategory = async ({categoryId, categoryData, token}) => {
+  const apiPath = getApiPath(paths.post.groups, categoryId);
+  let configurations = getConfigurations(httpMethods.PUT, categoryData, token);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
   return data;
