@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import { retrieveAuth } from './redux/actions';
+import 'semantic-ui-css/semantic.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './scss/style.scss';
 

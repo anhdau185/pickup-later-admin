@@ -1,14 +1,15 @@
 import { schemes, httpMethods, headers } from './staticEntries';
 
 const scheme = schemes.HTTPS;
-const host = 'def4867b084a.ngrok.io';
+const host = '6d921c01a096.ngrok.io';
 const basePath = '/api/v1';
 const paths = {
   get: {
     orders: '/orders',
     products: '/products',
     stores: '/stores',
-    groups: '/groups'
+    groups: '/groups',
+    productSearch: '/product/search'
   },
   post: {
     orders: '/orders',
@@ -122,6 +123,14 @@ export const updateProduct = async params => {
   return data;
 };
 
+export const productSearch = async ({ keyword, token }) => {
+  const apiPath = getApiPath(paths.get.productSearch, { keyword });
+  let configurations = getConfigurations(httpMethods.GET, null, token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
 export const getStores = async params => {
   const apiPath = getApiPath(paths.get.stores, {
     page: params.page,
@@ -165,7 +174,7 @@ export const getCategoryById = async ({ categoryId, token }) => {
   return data;
 };
 
-export const updateCategory = async ({categoryId, categoryData, token}) => {
+export const updateCategory = async ({ categoryId, categoryData, token }) => {
   const apiPath = getApiPath(paths.post.groups, categoryId);
   let configurations = getConfigurations(httpMethods.PUT, categoryData, token);
   const response = await fetch(apiPath, configurations);

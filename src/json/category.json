@@ -1,0 +1,81 @@
+{
+  "id": 4,
+  "name": "Ăn vặt",
+  "title": "Ăn vặt",
+  "description": "",
+  "imageUrl": "https://dl.dropboxusercontent.com/s/t8por8upkxa5uxl/category_icon_snacks.jpg",
+  "products": [
+    {
+      "id": 1023,
+      "name": "Bánh tráng trộn",
+      "title": "Bánh tráng trộn",
+      "price": 15000,
+      "salePrice": 15000,
+      "imageUrl": "https://dl.dropboxusercontent.com/s/iecka6mcrkxckr3/product_banh_trang_tron.jpg",
+      "freshFood": true,
+      "productType": "Product"
+    },
+    {
+      "id": 1024,
+      "name": "Trà tắc",
+      "title": "Trà tắc",
+      "price": 15000,
+      "salePrice": 15000,
+      "imageUrl": "https://dl.dropboxusercontent.com/s/b2dfhg67l4ntbza/product_tra_tac.jpg",
+      "freshFood": true,
+      "productType": "Product"
+    },
+    {
+      "id": 1025,
+      "name": "Trà chanh",
+      "title": "Trà chanh",
+      "price": 15000,
+      "salePrice": 15000,
+      "imageUrl": "https://dl.dropboxusercontent.com/s/161ce4v5x8endyi/product_tra_chanh.png",
+      "freshFood": true,
+      "productType": "Product"
+    },
+    {
+      "id": 1022,
+      "name": "Bánh tráng nướng",
+      "title": "Bánh tráng nướng (1 cái)",
+      "price": 5000,
+      "salePrice": 5000,
+      "imageUrl": "https://dl.dropboxusercontent.com/s/riip6pxaaarfsyh/product_banh_trang_nuong.webp",
+      "freshFood": true,
+      "productType": "Product"
+    },
+    {
+      "id": 1026,
+      "name": "Trà đào",
+      "title": "Trà đào",
+      "price": 15000,
+      "salePrice": 15000,
+      "imageUrl": "https://dl.dropboxusercontent.com/s/1ozyqhnympder32/product_tra_dao.webp",
+      "freshFood": true,
+      "productType": "Product"
+    },
+    {
+      "id": 1007,
+      "name": "Bò lát lôt",
+      "title": "Bò lá lốt",
+      "price": 15000,
+      "salePrice": 15000,
+      "imageUrl": "https://dl.dropboxusercontent.com/s/03azsmenjwihjgk/product_bo_la_lot.jpg",
+      "freshFood": true,
+      "productType": "Product"
+    },
+    {
+      "id": 1013,
+      "name": "Gỏi cuốn",
+      "title": "Gỏi cuốn",
+      "price": 20000,
+      "salePrice": 20000,
+      "imageUrl": "https://dl.dropboxusercontent.com/s/qqig19h9ig07vlf/product_goi_cuon.jpg",
+      "freshFood": true,
+      "productType": "Product"
+    }
+  ],
+  "createdAt": 1602170971394,
+  "updatedAt": 1602170971394
+}

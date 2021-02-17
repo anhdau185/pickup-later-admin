@@ -1,0 +1,46 @@
+{
+  "stores": [
+      {
+          "id": 1,
+          "storeId": "1000",
+          "name": "UIT SHOP",
+          "phoneNumber": "",
+          "address": "101 Xa Lộ Hà Nội, Phường Linh Trung, Thủ Đức, Thành Phố Hồ Chí Minh",
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdG9yZV9pZCI6IjEwMDAifQ.8FhkL1n3gOC1Yxne9cju7AisEqcvQwSFM6bdi5gHTEE",
+          "location": {
+              "id": 9,
+              "name": "Căn tin UIT (Nhà phục vụ sinh viên.)",
+              "placeId": "ChIJu03E-RDZdDERGJxcIXqGaZ4",
+              "address": "101 Xa Lộ Hà Nội, Phường Linh Trung, Thủ Đức, Thành Phố Hồ Chí Minh",
+              "lat": 10.869926,
+              "long": 106.80456,
+              "phoneNumber": "",
+              "status": 1,
+              "rating": 4,
+              "userRatingTotal": 1,
+              "mapUrl": "https://maps.google.com/?cid=11414802589651082264"
+          }
+      },
+      {
+          "id": 2,
+          "storeId": "1001",
+          "name": "Mẫn Nghi",
+          "phoneNumber": "",
+          "address": "101 Xa Lộ Hà Nội, Phường Linh Trung, Thủ Đức, Thành Phố Hồ Chí Minh",
+          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdG9yZV9pZCI6IjEwMDAifQ.8FhkL1n3gOC1Yxne9cju7AisEqcvQwSFM6bdi5gHTEE",
+          "location": {
+              "id": 0,
+              "name": "",
+              "placeId": "",
+              "address": "",
+              "lat": 0,
+              "long": 0,
+              "phoneNumber": "",
+              "status": 0,
+              "rating": 0,
+              "userRatingTotal": 0,
+              "mapUrl": ""
+          }
+      }
+  ]
+}

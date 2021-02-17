@@ -4,12 +4,14 @@ import { CCard, CCardBody, CCardHeader, CCol, CRow, CInput, CTextarea } from '@c
 import { getDateTimeFromMilliseconds } from 'helpers';
 import { Button, Row, Col } from 'react-bootstrap';
 import { getCategoryById, updateCategory } from 'api';
+import categoryJson from 'json/category.json';
+import ProductSelector from 'components/ProductSelector';
 
 class Category extends React.Component {
     constructor(props) {
         super(props);
         this.categoryId = this.props.match.params.id;
-        this.state = { category: null };
+        this.state = { category: categoryJson };
     }
 
     componentDidMount() {
@@ -77,15 +79,23 @@ class Category extends React.Component {
                                 <table className="table table-striped table-hover">
                                     <tbody>
                                         {
-                                            Object.keys(this.state.category).map((key, index) => (
-                                                <tr key={index}>
-                                                    <td>{key}:</td>
-                                                    <td>{this.renderFieldValue(key)}</td>
-                                                </tr>
-                                            ))
+                                            Object.keys(this.state.category).map((key, index) => {
+                                                if (key !== 'products') {
+                                                    return (
+                                                        <tr key={index}>
+                                                            <td>{key}:</td>
+                                                            <td>{this.renderFieldValue(key)}</td>
+                                                        </tr>
+                                                    );
+                                                }
+                                                return null;
+                                            })
                                         }
                                     </tbody>
                                 </table>
+                                <Row>
+                                    <ProductSelector products={this.state.category.products} />
+                                </Row>
                                 <Row>
                                     <Col className="text-right">
                                         <Button
