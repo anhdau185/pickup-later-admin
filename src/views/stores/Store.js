@@ -4,8 +4,7 @@ import { CCard, CCardBody, CCardHeader, CCol, CRow, CInput } from '@coreui/react
 import { getDateTimeFromMilliseconds } from 'helpers';
 import { Button, Row, Col } from 'react-bootstrap';
 import { getStoreById, updateStore } from 'api';
-import MapTemplate from 'components/MapTemplate';
-// import prod from 'json/store.json';
+import GoogleMap from 'components/GoogleMap';
 
 class Store extends React.Component {
     constructor(props) {
@@ -19,7 +18,11 @@ class Store extends React.Component {
             storeId: this.id,
             token: this.props.authToken
         })
-            .then(resp => this.setState({ store: this.populateStoreResponse(resp), building: this.buildingInfo(resp) }))
+            .then(resp => this.setState({ 
+                store: this.populateStoreResponse(resp),
+                building: this.buildingInfo(resp),
+                location:  this.locationInfo(resp)
+            }))
             .catch(err => console.error(err));
     }
 
@@ -37,27 +40,36 @@ class Store extends React.Component {
     }
 
     populateStoreResponse(resp) {
-      return {
-        id: resp.id,
-        storeId: resp.storeId,
-        name: resp.name,
-        phoneNumber: resp.phoneNumber,
-        address: resp.address,
-        latitude: resp.location.lat,
-        longitude: resp.location.long
-      }
+        return {
+          id: resp.id,
+          storeId: resp.storeId,
+          name: resp.name,
+          phoneNumber: resp.phoneNumber,
+          address: resp.address,
+          latitude: resp.location.lat,
+          longitude: resp.location.long
+        }
     };
 
     buildingInfo(resp) {
-      return {
-        id: resp.building.id,
-        name: resp.building.name,
-        address: resp.building.address,
-        latitude: resp.building.lat,
-        longitude: resp.building.long
-      }
+        return {
+            id: resp.building.id,
+            title: resp.building.name,
+            name: resp.building.address,
+            lat: resp.building.lat,
+            lng: resp.building.long
+        }
     };
-    
+
+    locationInfo(resp) {
+        return {
+            id: resp.location.id,
+            title: resp.location.name,
+            name: resp.location.address,
+            lat: resp.location.lat,
+            lng: resp.location.long
+        } 
+    }
 
     renderFieldValue(key) {
       return (<CInput
@@ -120,6 +132,11 @@ class Store extends React.Component {
                                         }}>Submit</Button>
                                     </Col>
                                 </Row>
+
+                                <GoogleMap 
+                                    params={{ building: this.state.building,
+                                            location: this.state.location }}
+                                />
                             </CCardBody>
                         </CCard>
                     </CCol>
