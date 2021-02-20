@@ -34,8 +34,23 @@ export default [
     to: '/stores'
   },
   {
+    _tag: 'CSidebarNavItem',
+    name: 'Order management',
+    to: '/orders'
+  },
+  {
     _tag: 'CSidebarNavTitle',
-    _children: ['Product Groups']
+    _children: ['Marketing']
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Campaigns',
+    to: '/campaigns'
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Vouchers',
+    to: '/vouchers'
   },
   {
     _tag: 'CSidebarNavDropdown',

@@ -39,10 +39,12 @@ const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
 const Products = React.lazy(() => import('./views/products/Products'));
 const Product = React.lazy(() => import('./views/products/Product'));
-const Stores = React.lazy(() => import('./views/stores/Stores'));
-const Store = React.lazy(() => import('./views/stores/Store'));
 const Categories = React.lazy(() => import('./views/categories/Categories'));
 const Category = React.lazy(() => import('./views/categories/Category'));
+const Stores = React.lazy(() => import('./views/stores/Stores'));
+const Store = React.lazy(() => import('./views/stores/Store'));
+const Orders = React.lazy(() => import('./views/orders/Orders'));
+const Order = React.lazy(() => import('./views/orders/Order'));
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -89,8 +91,8 @@ const routes = [
   { path: '/products/:id', exact: true,  name: 'Product Details', component: Product },
   { path: '/stores', exact: true,  name: 'Stores', component: Stores },
   { path: '/stores/:id', exact: true,  name: 'Store', component: Store },
-  { path: '/categories', exact: true,  name: 'Products', component: Categories },
-  { path: '/categories/:id', exact: true,  name: 'Product Details', component: Category },
+  { path: '/orders', exact: true,  name: 'Orders', component: Orders },
+  { path: '/orders/:id', exact: true,  name: 'Order Details', component: Order },
 ];
 
 export default routes;

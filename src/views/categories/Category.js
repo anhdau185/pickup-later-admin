@@ -13,10 +13,10 @@ class Category extends React.Component {
         super(props);
         this.categoryId = this.props.match.params.id;
         this.state = {
-            category: categoryJson/* {
+            category: {
                 products: [],
                 combos: []
-            } */
+            }
         };
     }
 
@@ -76,6 +76,7 @@ class Category extends React.Component {
 
     render() {
         if (this.state.category) {
+            console.log(this.state.category);
             return (
                 <CRow>
                     <CCol>

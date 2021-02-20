@@ -105,12 +105,17 @@ class Store extends React.Component {
                                 <table className="table table-striped table-hover">
                                     <tbody>
                                         {
-                                            Object.keys(this.state.store).map((key, index) => (
-                                                <tr key={index}>
-                                                    <td>{key}:</td>
-                                                    <td>{this.renderFieldValue(key)}</td>
-                                                </tr>
-                                            ))
+                                            Object.keys(this.state.store).map((key, index) => {
+                                                if (key !== 'groups') {
+                                                    return (
+                                                        <tr key={index}>
+                                                            <td>{key}:</td>
+                                                            <td>{this.renderFieldValue(key)}</td>
+                                                        </tr>
+                                                    );
+                                                }
+                                                return null;
+                                            })
                                         }
                                     </tbody>
                                 </table>
@@ -154,7 +159,7 @@ class Store extends React.Component {
                                 </Row>
                                 <Row>
                                     <Col className="text-right mt-3">
-                                        <Button disabled onClick={() => {
+                                        <Button onClick={() => {
                                             updateStore({
                                                 storeId: this.id,
                                                 storeData: this.getEditableFieldValues(),

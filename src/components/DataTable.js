@@ -65,4 +65,21 @@ DataTable.CategoryRow = ({ item, rowAction }) => {
     );
 };
 
+DataTable.OrderRow = ({ item }) => {
+    const { transactionNo, userName, phoneNumber, note, totalAmount, status, paymentMethod, paymentStatus, storeId } = item;
+    return (
+        <tr key={transactionNo}>
+            <td><Link to={`/orders/${transactionNo}`}>{transactionNo}</Link></td>
+            <td>{userName}</td>
+            <td>{phoneNumber}</td>
+            <td>{note}</td>
+            <td>{storeId}</td>
+            <td>{status}</td>
+            <td>{paymentMethod}</td>
+            <td>{paymentStatus}</td>
+            <td>{totalAmount}</td>
+        </tr>
+    );
+};
+
 export default DataTable;
