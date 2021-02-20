@@ -45,6 +45,10 @@ const Stores = React.lazy(() => import('./views/stores/Stores'));
 const Store = React.lazy(() => import('./views/stores/Store'));
 const Orders = React.lazy(() => import('./views/orders/Orders'));
 const Order = React.lazy(() => import('./views/orders/Order'));
+const Combos = React.lazy(() => import('./views/combos/Combos'));
+const Combo = React.lazy(() => import('./views/combos/Combo'));
+const Campaigns = React.lazy(() => import('./views/campaigns/Campaigns'));
+const Campaign = React.lazy(() => import('./views/campaigns/Campaign'));
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -93,6 +97,12 @@ const routes = [
   { path: '/stores/:id', exact: true,  name: 'Store', component: Store },
   { path: '/orders', exact: true,  name: 'Orders', component: Orders },
   { path: '/orders/:id', exact: true,  name: 'Order Details', component: Order },
+  { path: '/categories', exact: true,  name: 'Categories', component: Categories },
+  { path: '/categories/:id', exact: true,  name: 'Category Details', component: Category },
+  { path: '/combos', exact: true,  name: 'Combos', component: Combos },
+  { path: '/combos/:id', exact: true,  name: 'Combo Detail', component: Combo },
+  { path: '/campaigns', exact: true,  name: 'Campaigns', component: Campaigns },
+  { path: '/campaigns/:id', exact: true,  name: 'Campaign Detail', component: Campaign },
 ];
 
 export default routes;

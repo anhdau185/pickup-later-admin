@@ -1,0 +1,32 @@
+{
+  "id": 1,
+  "name": "Combo bánh mì ốp la & cafe",
+  "title": "Bánh mì ốp la (2 trứng) và cafe (size vừa)",
+  "price": 30000,
+  "salePrice": 28000,
+  "imageUrl": "https://dl.dropboxusercontent.com/s/uye09vi809krqgj/combo_banh_mi_cafe.jpg",
+  "products": [
+      {
+          "id": 1002,
+          "name": "Cafe sữa đá (size vừa)",
+          "title": "Cafe sữa đá (size vừa)",
+          "price": 15000,
+          "salePrice": 15000,
+          "imageUrl": "https://epicure.vn/wp-content/uploads/2017/08/may-rang-xay-cafe-tu-dong.jpg",
+          "freshFood": true,
+          "status": ""
+      },
+      {
+          "id": 1014,
+          "name": "Bánh mì ốp la",
+          "title": "Bánh mì ốp la (2 trứng)",
+          "price": 15000,
+          "salePrice": 15000,
+          "imageUrl": "https://dl.dropboxusercontent.com/s/x1lf2mouexd3mry/product_banh_mi_op_la.jpg",
+          "freshFood": true,
+          "status": ""
+      }
+  ],
+  "createdAt": 1602171062498,
+  "updatedAt": 1613729301063
+}

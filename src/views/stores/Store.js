@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { CCard, CCardBody, CCardHeader, CCol, CRow, CInput } from '@coreui/react';
 import { getDateTimeFromMilliseconds } from 'helpers';
 import { Button, Row, Col } from 'react-bootstrap';
-import { getStoreById, updateStore, getCategoryById } from 'api';
+import { getStoreById, updateStore } from 'api';
 import storeJson from 'json/store.json';
 import GoogleMap from 'components/GoogleMap';
 import CategorySelector from 'components/CategorySelector';
@@ -13,7 +13,7 @@ class Store extends React.Component {
     constructor(props) {
         super(props);
         this.id = this.props.match.params.id;
-        this.state = { store: storeJson, building: null };
+        this.state = { store: storeJson, building: null, location: null };
     }
 
     componentDidMount() {
@@ -93,7 +93,6 @@ class Store extends React.Component {
 
     render() {
         if (this.state.store) {
-            console.log(this.state.store);
             return (
                 <CRow>
                     <CCol>
@@ -180,13 +179,15 @@ class Store extends React.Component {
                                         }}>Submit</Button>
                                     </Col>
                                 </Row>
-
-                                {/* <GoogleMap
-                                    params={{
-                                        building: this.state.building,
-                                        location: this.state.location
-                                    }}
-                                /> */}
+                                {this.state.building
+                                    ? <GoogleMap
+                                            key={this.state.store.id}
+                                            params={{
+                                                building: this.state.building,
+                                                location: this.state.location
+                                            }}
+                                        />
+                                     : null}    
                             </CCardBody>
                         </CCard>
                     </CCol>

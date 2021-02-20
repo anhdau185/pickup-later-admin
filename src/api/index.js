@@ -182,6 +182,44 @@ export const categorySearch = async ({ keyword, token }) => {
   return data;
 };
 
+export const getCombos = async params => {
+  const apiPath = getApiPath('/combos', {
+    page: params.page,
+    perPage: params.perPage
+  });
+  let configurations = getConfigurations(httpMethods.GET, null, params.token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const getComboById = async params => {
+  const apiPath = getApiPath('/combos', params.comboId);
+  let configurations = getConfigurations(httpMethods.GET, null, params.token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const getCampaigns = async params => {
+  const apiPath = getApiPath('/campaigns', {
+    page: params.page,
+    perPage: params.perPage
+  });
+  let configurations = getConfigurations(httpMethods.GET, null, params.token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const getCampaignById = async params => {
+  const apiPath = getApiPath('/campaigns', params.campaignId);
+  let configurations = getConfigurations(httpMethods.GET, null, params.token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
 export const getOrders = async (params, token) => {
   const apiPath = getApiPath('/orders', params);
   let configurations = getConfigurations(httpMethods.GET, null, token);

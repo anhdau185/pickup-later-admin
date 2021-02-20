@@ -1,0 +1,32 @@
+{
+    "id": 1,
+    "name": "UIT NEW YEAR",
+    "code": "UIT_2021",
+    "issuedQuantity": 10,
+    "status": "ACTIVE",
+    "startDate": -6795364578871,
+    "endDate": -6795364578871,
+    "createdAt": -6795364578871,
+    "updatedAt": -6795364578871,
+    "description": "",
+    "vouchers": [
+        {
+            "id": 2,
+            "name": "Giảm giá 50% tối đa 20k",
+            "code": "VC50_20K",
+            "value": 50,
+            "type": "DISCOUNT",
+            "maxDiscount": 20000,
+            "availableQuantity": 0
+        },
+        {
+            "id": 1,
+            "name": "Giảm giá 20k",
+            "code": "VC20K",
+            "value": 20000,
+            "type": "CASH",
+            "maxDiscount": 0,
+            "availableQuantity": 0
+        }
+    ]
+}
