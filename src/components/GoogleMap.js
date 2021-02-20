@@ -7,14 +7,13 @@ const mapStyles = {
     top: '0',
 };
 
-export class GoogleMap extends Component { 
+export class GoogleMap extends Component {
     constructor(props) {
-        super(props);       
+        super(props);
         var params = props.params;
         this.state = {
             building: params.building,
-            locations: [  params.building,
-                        params.location ],     
+            locations: params.location,
             showingInfoWindow: false,
             activeMarker: {},
             selectedPlace: {},
@@ -24,34 +23,36 @@ export class GoogleMap extends Component {
 
     onMarkerClick = (props, marker, e) =>
         this.setState({
-          selectedPlace: props,
-          activeMarker: marker,
-          showingInfoWindow: true
+            selectedPlace: props,
+            activeMarker: marker,
+            showingInfoWindow: true
         });
- 
+
     onMapClicked = (props) => {
         if (this.state.showingInfoWindow) {
-          this.setState({
-            showingInfoWindow: false,
-            activeMarker: null
-          })
+            this.setState({
+                showingInfoWindow: false,
+                activeMarker: null
+            })
         }
     };
-  
+
     displayMarkers = () => {
-        return( 
+        console.log(this.state.locations)
+        return (
             this.state.locations.map((location, index) => {
-            return <Marker key={index} id={index} 
-                position={{
-                  lat: location.lat,
-                  lng: location.lng,
-                }}
-                title={location.title}
-                name={location.name}
-                onClick = {this.onMarkerClick}
-              />   
+                return <Marker key={index} id={index}
+                    position={{
+                        lat: location.lat,
+                        lng: location.lng,
+                    }}
+                    title={location.name}
+                    name={location.address}
+                    onClick={this.onMarkerClick}
+                />
             })
-        )}
+        )
+    }
 
     render() {
         return (
@@ -60,11 +61,11 @@ export class GoogleMap extends Component {
                 zoom={this.state.zoom}
                 style={mapStyles}
                 initialCenter={{
-                  lat: this.state.building.lat,
-                  lng: this.state.building.lng
+                    lat: this.state.building.lat,
+                    lng: this.state.building.lng
                 }}
                 onClick={this.onMapClicked}>
-                {this.displayMarkers()} 
+                {this.displayMarkers()}
                 <InfoWindow
                     marker={this.state.activeMarker}
                     visible={this.state.showingInfoWindow}>
@@ -76,8 +77,8 @@ export class GoogleMap extends Component {
         );
     }
 }
- 
-export default  GoogleApiWrapper({
+
+export default GoogleApiWrapper({
     apiKey: "AIzaSyBt7nd_CE9_Vw4s6qW-rCmPWjrpCOoOZVA",
     v: "3.30"
 })(GoogleMap)

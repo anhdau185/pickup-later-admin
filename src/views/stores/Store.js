@@ -58,20 +58,20 @@ class Store extends React.Component {
     buildingInfo(resp) {
         return {
             id: resp.building.id,
-            title: resp.building.name,
-            name: resp.building.address,
+            name: resp.building.name,
+            address: resp.building.address,
             lat: resp.building.lat,
-            lng: resp.building.long
+            lng: resp.building.lng
         }
     };
 
     locationInfo(resp) {
         return {
             id: resp.location.id,
-            title: resp.location.name,
-            name: resp.location.address,
+            name: resp.location.name,
+            address: resp.location.address,
             lat: resp.location.lat,
-            lng: resp.location.long
+            lng: resp.location.lng
         }
     }
 
@@ -181,13 +181,14 @@ class Store extends React.Component {
                                 </Row>
                                 {this.state.building
                                     ? <GoogleMap
-                                            key={this.state.store.id}
-                                            params={{
-                                                building: this.state.building,
-                                                location: this.state.location
-                                            }}
-                                        />
-                                     : null}    
+                                        key={this.state.store.id}
+                                        params={{
+                                            building: this.state.building,
+                                            location: [this.state.location, this.state.building]
+                                        }}
+                                    />
+                                    : null
+                                }
                             </CCardBody>
                         </CCard>
                     </CCol>

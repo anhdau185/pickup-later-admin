@@ -81,6 +81,7 @@ DataTable.OrderRow = ({ item }) => {
             <td>{totalAmount}</td>
         </tr>);
 };
+
 DataTable.ComboRow = ({ item, rowAction }) => {
     const { id, name, title, price, salePrice } = item;
     return (
@@ -137,6 +138,21 @@ DataTable.VoucherRow = ({ item, rowAction }) => {
             }
         </tr>
     );
+};
+
+DataTable.LocationRow = ({ item }) => {
+    const { id, name, address, lat, lng, phoneNumber, status, rating, userRatingTotal } = item;
+    return (
+        <tr key={id}>
+            <td><Link to={`/locations/${id}`}>{id}</Link></td>
+            <td>{name}</td>
+            <td>{address}</td>
+            <td>{lat}, {lng}</td>
+            <td>{phoneNumber}</td>
+            <td>{status}</td>
+            <td>{rating}</td>
+            <td>{userRatingTotal}</td>
+        </tr>);
 };
 
 export default DataTable;

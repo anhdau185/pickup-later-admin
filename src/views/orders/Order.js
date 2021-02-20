@@ -1,84 +1,160 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { useHistory, useLocation } from 'react-router-dom';
-import {
-    CCard,
-    CCardBody,
-    CCardHeader,
-    CCol,
-    CRow,
-    CPagination
-} from '@coreui/react';
-import {
-    Button,
-    Checkbox,
-    Form,
-    Input,
-    Radio,
-    Select,
-    TextArea,
-} from 'semantic-ui-react';
-import { getOrders } from 'api';
-import DataTable from 'components/DataTable';
+// import React, { useState, useEffect } from 'react';
+// import { connect } from 'react-redux';
+// import { useHistory, useLocation } from 'react-router-dom';
+// import {
+//     CCard,
+//     CCardBody,
+//     CCardHeader,
+//     CCol,
+//     CRow,
+//     CPagination
+// } from '@coreui/react';
+// import {
+//     Button,
+//     Checkbox,
+//     Form,
+//     Input,
+//     Radio,
+//     Select,
+//     TextArea,
+// } from 'semantic-ui-react';
+// import { getOrderById } from 'api';
+// import { formatPrice } from 'helpers';
+// import DataTable from 'components/DataTable';
 
-const Order = ({ authToken }) => {
-    const history = useHistory();
-    const queryPage = useLocation().search.match(/page=([0-9]+)/, '');
-    const [page, setPage] = useState(queryPage && queryPage[1] ? parseInt(queryPage[1]) : 1);
-    const [orders, setOrders] = useState(null);
+// class Order extends React.Component {
+//     constructor(props) {
+//         super(props);
+//         this.orderId = this.props.match.params.id;
+//         this.state = { order: null };
+//     }
 
-    useEffect(() => {
-        getOrders({
-            page,
-            perPage: 100,
-            token: authToken
-        })
-            .then(resp => setOrders(resp))
-            .catch(err => console.error(err));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [page]);
+//     componentDidMount() {
+//         getOrderById({
+//             orderId: this.orderId,
+//             token: this.props.authToken
+//         })
+//             .then(resp => this.setState({ order: resp }))
+//             .catch(err => console.error(err));
+//     }
 
-    if (orders && !orders.error) {
-        return (
-            <CRow>
-                <CCol>
-                    <CCard>
-                        <CCardHeader>Filters</CCardHeader>
-                        <CCardBody>
-                            
-                        </CCardBody>
-                    </CCard>
-                    <CCard>
-                        <CCardHeader>Orders</CCardHeader>
-                        <CCardBody>
-                            <DataTable fields={['Transaction no.', 'Username', 'Phone number', 'Note', 'Store ID', 'Status', 'Payment method', 'Payment status', 'Total amount']}>
-                                {orders.records.orders.map(
-                                    item => <DataTable.OrderRow item={item} onRowClick={item => history.push(`/orders/${item.id}`)} />
-                                )}
-                            </DataTable>
-                            <CPagination
-                                activePage={page}
-                                onActivePageChange={newPage => {
-                                    if (newPage !== page) {
-                                        setPage(newPage);
-                                        history.push(`/orders?page=${newPage}`);
-                                    }
-                                }}
-                                pages={orders ? orders.pages : 1}
-                                doubleArrows={false}
-                                align="center"
-                            />
-                        </CCardBody>
-                    </CCard>
-                </CCol>
-            </CRow>
-        );
-    }
+//     getEditableFieldValues() {
+//         return {
+//             name: this.state.order.name,
+//             title: this.state.order.title,
+//             price: this.state.order.price,
+//             salePrice: this.state.order.salePrice,
+//             imageUrl: this.state.order.imageUrl,
+//             freshFood: this.state.order.freshFood,
+//             status: this.state.order.status
+//         };
+//     }
 
-    return null;
-};
+//     renderFieldValue(key) {
+//         switch (key) {
+//             case 'price':
+//             case 'salePrice':
+//                 return (
+//                     <CInput
+//                         type="number"
+//                         value={this.state.order[key]}
+//                         onChange={e => {
+//                             let newProduct = { ...this.state.order };
+//                             newProduct[key] = Number(e.target.value);
+//                             if (!isNaN(newProduct[key])) {
+//                                 this.setState({ product: newProduct });
+//                             }
+//                         }}
+//                     />
+//                 );
+//             case 'freshFood':
+//                 return (
+//                     <CSelect
+//                         custom
+//                         name="freshfood"
+//                         value={this.state.order['freshFood'] ? '1' : ''}
+//                         onChange={e => {
+//                             this.setState({
+//                                 product: {
+//                                     ...this.state.order,
+//                                     freshFood: !!e.target.value
+//                                 }
+//                             });
+//                         }}
+//                     >
+//                         <option value="">No</option>
+//                         <option value="1">Yes</option>
+//                     </CSelect>
+//                 );
+//             case 'status':
+//                 return (
+//                     <CSelect
+//                         custom
+//                         name="productstatus"
+//                         value={this.state.order['status']}
+//                         onChange={e => {
+//                             this.setState({
+//                                 product: {
+//                                     ...this.state.order,
+//                                     status: e.target.value
+//                                 }
+//                             });
+//                         }}
+//                     >
+//                         <option value="ACTIVE">ACTIVE</option>
+//                         <option value="INACTIVE">INACTIVE</option>
+//                     </CSelect>
+//                 );
+//             default:
+//                 return (
+//                     <CInput
+//                         disabled={key === 'id' || key === 'createdAt' || key === 'updatedAt'}
+//                         value={key === 'createdAt' || key === 'updatedAt'
+//                             ? getDateTimeFromMilliseconds(this.state.order[key])
+//                             : this.state.order[key]
+//                         }
+//                         onChange={e => {
+//                             let newProduct = { ...this.state.order };
+//                             newProduct[key] = e.target.value;
+//                             this.setState({ product: newProduct });
+//                         }}
+//                     />
+//                 );
+//         }
+//     }
 
-const mapStateToProps = ({ auth }) => ({ authToken: auth ? auth.token : '' });
-const ConnectedComp = connect(mapStateToProps)(Order);
+//     render() {
+//         if (this.state.order) {
+//             return (
+//                 <CRow>
+//                     <CCol>
+//                         <CCard>
+//                             <CCardHeader>Order ID: {this.orderId}</CCardHeader>
+//                             <CCardBody>
+//                                 <table className="table table-striped table-hover">
+//                                     <tbody>
+//                                         {
+//                                             Object.keys(this.state.order).map((key, index) => (
+//                                                 <tr key={index}>
+//                                                     <td>{key}:</td>
+//                                                     <td>{this.renderFieldValue(key)}</td>
+//                                                 </tr>
+//                                             ))
+//                                         }
+//                                     </tbody>
+//                                 </table>
+//                             </CCardBody>
+//                         </CCard>
+//                     </CCol>
+//                 </CRow>
+//             );
+//         }
 
-export default ConnectedComp;
+//         return null;
+//     }
+// }
+
+// const mapStateToProps = ({ auth }) => ({ authToken: auth ? auth.token : '' });
+// const ConnectedComp = connect(mapStateToProps)(Order);
+
+// export default ConnectedComp;

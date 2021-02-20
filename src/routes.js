@@ -49,6 +49,8 @@ const Combos = React.lazy(() => import('./views/combos/Combos'));
 const Combo = React.lazy(() => import('./views/combos/Combo'));
 const Campaigns = React.lazy(() => import('./views/campaigns/Campaigns'));
 const Campaign = React.lazy(() => import('./views/campaigns/Campaign'));
+const Locations = React.lazy(() => import('./views/locations/Locations'));
+const Location = React.lazy(() => import('./views/locations/Location'));
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -103,6 +105,8 @@ const routes = [
   { path: '/combos/:id', exact: true,  name: 'Combo Detail', component: Combo },
   { path: '/campaigns', exact: true,  name: 'Campaigns', component: Campaigns },
   { path: '/campaigns/:id', exact: true,  name: 'Campaign Detail', component: Campaign },
+  { path: '/locations', exact: true,  name: 'Locations', component: Locations },
+  { path: '/locations/:id', exact: true,  name: 'Location Details', component: Location },
 ];
 
 export default routes;

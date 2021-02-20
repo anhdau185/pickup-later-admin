@@ -1,7 +1,7 @@
 import { schemes, httpMethods, headers } from './staticEntries';
 
 const scheme = schemes.HTTPS;
-const host = 'a91086d5b623.ngrok.io';
+const host = '77363d0738d9.ngrok.io';
 const basePath = '/api/v1';
 
 function toQueryString(params) {
@@ -232,6 +232,25 @@ export const getOrderById = async ({ orderId, token }) => {
   const apiPath = getApiPath('/orders', orderId);
   console.log(apiPath);
   let configurations = getConfigurations(httpMethods.GET, null, token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const getLocations = async params => {
+  const apiPath = getApiPath('/locations', {
+    page: params.page,
+    perPage: params.perPage
+  });
+  let configurations = getConfigurations(httpMethods.GET, null, params.token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const getLocationById = async params => {
+  const apiPath = getApiPath('/locations', params.locationId);
+  let configurations = getConfigurations(httpMethods.GET, null, params.token);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
   return data;
