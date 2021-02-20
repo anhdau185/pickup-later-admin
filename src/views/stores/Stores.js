@@ -19,7 +19,7 @@ const Stores = ({ authToken }) => {
     const [stores, setStores] = useState(null);
 
     useEffect(() => {
-      getStores({
+        getStores({
             page,
             perPage: 10,
             token: authToken
@@ -34,15 +34,11 @@ const Stores = ({ authToken }) => {
             <CRow>
                 <CCol>
                     <CCard>
-                        <CCardHeader>
-                            Stores
-                    </CCardHeader>
+                        <CCardHeader>Stores</CCardHeader>
                         <CCardBody>
                             <DataTableStore
                                 items={stores.stores}
-                                fields={[
-                                    'ID', 'StoreID', 'Name', 'Phone Number', 'Address'
-                                ]}
+                                fields={['ID', 'StoreID', 'Name', 'Phone Number', 'Address']}
                                 onRowClick={item => history.push(`/stores/${item.id}`)}
                             />
                         </CCardBody>

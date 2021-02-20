@@ -1,24 +1,8 @@
 import { schemes, httpMethods, headers } from './staticEntries';
 
 const scheme = schemes.HTTPS;
-const host = '6d921c01a096.ngrok.io';
+const host = 'c9dfa7871594.ngrok.io';
 const basePath = '/api/v1';
-const paths = {
-  get: {
-    orders: '/orders',
-    products: '/products',
-    stores: '/stores',
-    groups: '/groups',
-    productSearch: '/product/search'
-  },
-  post: {
-    orders: '/orders',
-    login: '/mobile/users/login',
-    authenticate: '/start_session',
-    products: '/products',
-    groups: '/groups'
-  }
-};
 
 function toQueryString(params) {
   if (typeof params !== 'object') return '';
@@ -57,7 +41,7 @@ function getConfigurations(method, data = null, token = null) {
 }
 
 export const fetchOrders = async params => {
-  const apiPath = getApiPath(paths.get.orders, params);
+  const apiPath = getApiPath('/orders', params);
   const configurations = getConfigurations(httpMethods.GET);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
@@ -65,7 +49,7 @@ export const fetchOrders = async params => {
 };
 
 export const fetchOrder = async orderId => {
-  const apiPath = getApiPath(paths.get.orders, orderId);
+  const apiPath = getApiPath('/orders', orderId);
   const configurations = getConfigurations(httpMethods.GET);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
@@ -73,7 +57,7 @@ export const fetchOrder = async orderId => {
 };
 
 export const updateOrder = async orderData => {
-  const apiPath = getApiPath(paths.post.orders);
+  const apiPath = getApiPath('/orders');
   const configurations = getConfigurations(httpMethods.PUT, orderData);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
@@ -81,7 +65,7 @@ export const updateOrder = async orderData => {
 };
 
 export const accountLogin = async authentication => {
-  const apiPath = getApiPath(paths.post.login, null, false);
+  const apiPath = getApiPath('/mobile/users/login', null, false);
   const configurations = getConfigurations(httpMethods.POST, authentication);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
@@ -89,7 +73,7 @@ export const accountLogin = async authentication => {
 };
 
 export const authenticateUser = async authToken => {
-  const apiPath = getApiPath(paths.post.authenticate);
+  const apiPath = getApiPath('/start_session');
   let configurations = getConfigurations(httpMethods.POST, null, authToken);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
@@ -97,7 +81,7 @@ export const authenticateUser = async authToken => {
 };
 
 export const getProducts = async params => {
-  const apiPath = getApiPath(paths.get.products, {
+  const apiPath = getApiPath('/products', {
     page: params.page,
     perPage: params.perPage
   });
@@ -108,7 +92,7 @@ export const getProducts = async params => {
 };
 
 export const getProductById = async params => {
-  const apiPath = getApiPath(paths.get.products, params.productId);
+  const apiPath = getApiPath('/products', params.productId);
   let configurations = getConfigurations(httpMethods.GET, null, params.token);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
@@ -116,7 +100,7 @@ export const getProductById = async params => {
 };
 
 export const updateProduct = async params => {
-  const apiPath = getApiPath(paths.post.products, params.productId);
+  const apiPath = getApiPath('/products', params.productId);
   let configurations = getConfigurations(httpMethods.PUT, params.productData, params.token);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
@@ -124,7 +108,15 @@ export const updateProduct = async params => {
 };
 
 export const productSearch = async ({ keyword, token }) => {
-  const apiPath = getApiPath(paths.get.productSearch, { keyword });
+  const apiPath = getApiPath('/product/search', { keyword });
+  let configurations = getConfigurations(httpMethods.GET, null, token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const comboSearch = async ({ keyword, token }) => {
+  const apiPath = getApiPath('/combo/search', { keyword });
   let configurations = getConfigurations(httpMethods.GET, null, token);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
@@ -132,7 +124,7 @@ export const productSearch = async ({ keyword, token }) => {
 };
 
 export const getStores = async params => {
-  const apiPath = getApiPath(paths.get.stores, {
+  const apiPath = getApiPath('/stores', {
     page: params.page,
     perPage: params.perPage
   });
@@ -143,7 +135,7 @@ export const getStores = async params => {
 };
 
 export const getStoreById = async params => {
-  const apiPath = getApiPath(paths.get.stores, params.storeId);
+  const apiPath = getApiPath('/stores', params.storeId);
   let configurations = getConfigurations(httpMethods.GET, null, params.token);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
@@ -151,7 +143,7 @@ export const getStoreById = async params => {
 };
 
 export const updateStore = async params => {
-  const apiPath = getApiPath(paths.get.stores, params.storeId);
+  const apiPath = getApiPath('/stores', params.storeId);
   let configurations = getConfigurations(httpMethods.GET, null, params.token);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
@@ -159,7 +151,7 @@ export const updateStore = async params => {
 };
 
 export const getCategories = async ({ page, perPage, token }) => {
-  const apiPath = getApiPath(paths.get.groups, { page, perPage });
+  const apiPath = getApiPath('/groups', { page, perPage });
   let configurations = getConfigurations(httpMethods.GET, null, token);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
@@ -167,7 +159,7 @@ export const getCategories = async ({ page, perPage, token }) => {
 };
 
 export const getCategoryById = async ({ categoryId, token }) => {
-  const apiPath = getApiPath(paths.get.groups, categoryId);
+  const apiPath = getApiPath('/groups', categoryId);
   let configurations = getConfigurations(httpMethods.GET, null, token);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
@@ -175,8 +167,16 @@ export const getCategoryById = async ({ categoryId, token }) => {
 };
 
 export const updateCategory = async ({ categoryId, categoryData, token }) => {
-  const apiPath = getApiPath(paths.post.groups, categoryId);
+  const apiPath = getApiPath('/groups', categoryId);
   let configurations = getConfigurations(httpMethods.PUT, categoryData, token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const categorySearch = async ({ keyword, token }) => {
+  const apiPath = getApiPath('/group/search', { keyword });
+  let configurations = getConfigurations(httpMethods.GET, null, token);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();
   return data;

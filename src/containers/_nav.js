@@ -29,6 +29,11 @@ export default [
     to: '/categories'
   },
   {
+    _tag: 'CSidebarNavItem',
+    name: 'Store management',
+    to: '/stores'
+  },
+  {
     _tag: 'CSidebarNavTitle',
     _children: ['Product Groups']
   },

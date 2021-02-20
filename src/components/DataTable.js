@@ -2,6 +2,7 @@ import React from 'react';
 import { Table } from 'react-bootstrap';
 import { CBadge } from '@coreui/react';
 import { formatPrice } from 'helpers';
+import { Link } from 'react-router-dom';
 
 const getBadge = status => {
     switch (status) {
@@ -24,11 +25,11 @@ const DataTable = ({ fields, children }) => {
     );
 };
 
-DataTable.ProductRow = ({ item, onRowClick }) => {
+DataTable.ProductRow = ({ item, rowAction }) => {
     const { id, name, title, price, salePrice, freshFood, status } = item;
     return (
-        <tr key={id} onClick={() => onRowClick(item)} style={{ cursor: 'pointer' }}>
-            <td>{id}</td>
+        <tr key={id}>
+            <td><Link to={`/products/${id}`}>{id}</Link></td>
             <td><b>{name}</b></td>
             <td>{title}</td>
             <td>{formatPrice(price)}</td>
@@ -39,17 +40,27 @@ DataTable.ProductRow = ({ item, onRowClick }) => {
                     {status}
                 </CBadge>
             </td>
+            {
+                rowAction
+                    ? <td onClick={rowAction.action} style={{ cursor: 'pointer', color: '#dc143c', textAlign: 'center' }}><b>{rowAction.name}</b></td>
+                    : null
+            }
         </tr>
     );
 };
 
-DataTable.CategoryRow = ({ item, onRowClick }) => {
+DataTable.CategoryRow = ({ item, rowAction }) => {
     const { id, name, title } = item;
     return (
-        <tr key={id} onClick={() => onRowClick(item)} style={{ cursor: 'pointer' }}>
-            <td>{id}</td>
+        <tr key={id}>
+            <td><Link to={`/categories/${id}`}>{id}</Link></td>
             <td><b>{name}</b></td>
             <td>{title}</td>
+            {
+                rowAction
+                    ? <td onClick={rowAction.action} style={{ cursor: 'pointer', color: '#dc143c', textAlign: 'center' }}><b>{rowAction.name}</b></td>
+                    : null
+            }
         </tr>
     );
 };

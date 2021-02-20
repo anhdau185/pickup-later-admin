@@ -3,14 +3,17 @@ import { connect } from 'react-redux';
 import { CCard, CCardBody, CCardHeader, CCol, CRow, CInput } from '@coreui/react';
 import { getDateTimeFromMilliseconds } from 'helpers';
 import { Button, Row, Col } from 'react-bootstrap';
-import { getStoreById, updateStore } from 'api';
+import { getStoreById, updateStore, getCategoryById } from 'api';
+import storeJson from 'json/store.json';
 import GoogleMap from 'components/GoogleMap';
+import CategorySelector from 'components/CategorySelector';
+import DataTable from 'components/DataTable';
 
 class Store extends React.Component {
     constructor(props) {
         super(props);
         this.id = this.props.match.params.id;
-        this.state = { store: null, building: null };
+        this.state = { store: storeJson, building: null };
     }
 
     componentDidMount() {
@@ -18,10 +21,10 @@ class Store extends React.Component {
             storeId: this.id,
             token: this.props.authToken
         })
-            .then(resp => this.setState({ 
-                store: this.populateStoreResponse(resp),
+            .then(resp => this.setState({
+                store: resp,
                 building: this.buildingInfo(resp),
-                location:  this.locationInfo(resp)
+                location: this.locationInfo(resp)
             }))
             .catch(err => console.error(err));
     }
@@ -35,19 +38,20 @@ class Store extends React.Component {
             salePrice: this.state.store.salePrice,
             imageUrl: this.state.store.imageUrl,
             freshFood: this.state.store.freshFood,
-            status: this.state.store.status
+            status: this.state.store.status,
+            groupIds: this.state.store.groups.map(({ id }) => id)
         };
     }
 
     populateStoreResponse(resp) {
         return {
-          id: resp.id,
-          storeId: resp.storeId,
-          name: resp.name,
-          phoneNumber: resp.phoneNumber,
-          address: resp.address,
-          latitude: resp.location.lat,
-          longitude: resp.location.long
+            id: resp.id,
+            storeId: resp.storeId,
+            name: resp.name,
+            phoneNumber: resp.phoneNumber,
+            address: resp.address,
+            latitude: resp.location.lat,
+            longitude: resp.location.long
         }
     };
 
@@ -68,27 +72,28 @@ class Store extends React.Component {
             name: resp.location.address,
             lat: resp.location.lat,
             lng: resp.location.long
-        } 
+        }
     }
 
     renderFieldValue(key) {
-      return (<CInput
-          disabled={key === 'id' || key === 'createdAt' || key === 'updatedAt'}
-          value={key === 'createdAt' || key === 'updatedAt'
-              ? getDateTimeFromMilliseconds(this.state.store[key])
-              : this.state.store[key]
-          }
-          onChange={e => {
-              let newStore = { ...this.state.store };
-              newStore[key] = e.target.value;
-              this.setState({ store: newStore });
-          }}
-      />);
+        return (<CInput
+            disabled={key === 'id' || key === 'createdAt' || key === 'updatedAt'}
+            value={key === 'createdAt' || key === 'updatedAt'
+                ? getDateTimeFromMilliseconds(this.state.store[key])
+                : this.state.store[key]
+            }
+            onChange={e => {
+                let newStore = { ...this.state.store };
+                newStore[key] = e.target.value;
+                this.setState({ store: newStore });
+            }}
+        />);
     }
 
 
     render() {
         if (this.state.store) {
+            console.log(this.state.store);
             return (
                 <CRow>
                     <CCol>
@@ -110,7 +115,45 @@ class Store extends React.Component {
                                     </tbody>
                                 </table>
                                 <Row>
-                                    <Col className="text-right">
+                                    <Col>
+                                        <h5>Categories assigned to this store:</h5>
+                                        <DataTable fields={['ID', 'Name', 'Title']}>
+                                            {this.state.store.groups.map(item => (
+                                                <DataTable.CategoryRow
+                                                    item={item}
+                                                    rowAction={{
+                                                        name: 'Remove',
+                                                        action: () => {
+                                                            if (window.confirm('Remove category from store menu?')) {
+                                                                this.setState(prevState => {
+                                                                    let nextState = { store: { ...prevState.store } };
+                                                                    nextState.store.groups = nextState.store.groups.filter(group => group.id !== item.id);
+                                                                    return nextState;
+                                                                });
+                                                            }
+                                                        }
+                                                    }}
+                                                />
+                                            ))}
+                                        </DataTable>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <h5>Add a category to store menu:</h5>
+                                        <CategorySelector
+                                            onSelect={category => {
+                                                this.setState(prevState => {
+                                                    let nextState = { store: { ...prevState.store } };
+                                                    nextState.store.groups.push(category);
+                                                    return nextState;
+                                                });
+                                            }}
+                                        />
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col className="text-right mt-3">
                                         <Button disabled onClick={() => {
                                             updateStore({
                                                 storeId: this.id,
@@ -133,10 +176,12 @@ class Store extends React.Component {
                                     </Col>
                                 </Row>
 
-                                <GoogleMap 
-                                    params={{ building: this.state.building,
-                                            location: this.state.location }}
-                                />
+                                {/* <GoogleMap
+                                    params={{
+                                        building: this.state.building,
+                                        location: this.state.location
+                                    }}
+                                /> */}
                             </CCardBody>
                         </CCard>
                     </CCol>

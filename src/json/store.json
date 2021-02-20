@@ -1,0 +1,71 @@
+{
+  "id": 1,
+  "storeId": "1000",
+  "name": "UIT SHOP",
+  "phoneNumber": "",
+  "address": "101 Xa Lộ Hà Nội, Phường Linh Trung, Thủ Đức, Thành Phố Hồ Chí Minh",
+  "location": {
+    "id": 9,
+    "name": "Căn tin UIT (Nhà phục vụ sinh viên.)",
+    "placeId": "ChIJu03E-RDZdDERGJxcIXqGaZ4",
+    "address": "101 Xa Lộ Hà Nội, Phường Linh Trung, Thủ Đức, Thành Phố Hồ Chí Minh",
+    "lat": 10.869926,
+    "long": 106.80456,
+    "phoneNumber": "",
+    "status": 1,
+    "rating": 4,
+    "userRatingTotal": 1,
+    "mapUrl": "https://maps.google.com/?cid=11414802589651082264"
+  },
+  "building": {
+    "id": 1,
+    "name": "Trường Đại học Công nghệ Thông tin - ĐHQG Thành phố Hồ Chí Minh",
+    "address": "Song Hành, khu phố 6, Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam",
+    "lat": 10.869919,
+    "long": 106.80381
+  },
+  "groups": [
+    {
+      "id": 1,
+      "name": "Thức uống",
+      "title": "Thức uống",
+      "description": "",
+      "imageUrl": "https://dl.dropboxusercontent.com/s/fjtgt9hwiqblr0e/category_icon_beverage_beer.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Cơm phần",
+      "title": "Cơm phần",
+      "description": "",
+      "imageUrl": "https://dl.dropboxusercontent.com/s/dtg92olw2gb27zd/category_icon_main_course.png"
+    },
+    {
+      "id": 3,
+      "name": "Bún/phở",
+      "title": "Bún/phở",
+      "description": "",
+      "imageUrl": "https://dl.dropboxusercontent.com/s/mt6syxmg99hpt3p/category_icon_pho.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Ăn vặt",
+      "title": "Ăn vặt",
+      "description": "",
+      "imageUrl": "https://dl.dropboxusercontent.com/s/t8por8upkxa5uxl/category_icon_snacks.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Ăn sáng",
+      "title": "Ăn sáng",
+      "description": "Bữa sáng đầy đủ dinh dưỡng",
+      "imageUrl": "https://dl.dropboxusercontent.com/s/hit468bkxyarjo2/category_icon_breakfast.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Bánh kẹo",
+      "title": "Bánh kẹo",
+      "description": "",
+      "imageUrl": "https://dl.dropboxusercontent.com/s/cz180vqdpcglqoy/group_banh_keo.jpg"
+    }
+  ]
+}
