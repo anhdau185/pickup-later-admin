@@ -36,7 +36,7 @@ const Vouchers = ({ authToken }) => {
                     <CCard>
                         <CCardHeader>Vouchers</CCardHeader>
                         <CCardBody>
-                            <DataTable fields={['ID', 'Name', 'Code', 'Value', 'Max. discount', 'Expired at', 'Available qty']}>
+                            <DataTable fields={['ID', 'Name', 'Code', 'Type', 'Value', 'Max. discount', 'Expired at', 'Available qty']}>
                                 {vouchers.records.map(
                                     item => <DataTable.VoucherRow item={item} onRowClick={item => history.push(`/vouchers/${item.id}`)} />
                                 )}

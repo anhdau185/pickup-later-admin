@@ -123,12 +123,13 @@ DataTable.CampaignRow = ({ item, rowAction }) => {
 };
 
 DataTable.VoucherRow = ({ item, rowAction }) => {
-    const { id, name, code, value, expiredAt, maxDiscount, availableQuantity } = item;
+    const { id, name, code, value, expiredAt, type, maxDiscount, availableQuantity } = item;
     return (
         <tr key={id}>
             <td><Link to={`/vouchers/${id}`}>{id}</Link></td>
             <td><Link to={`/vouchers/${id}`}><b>{name}</b></Link></td>
             <td>{code}</td>
+            <td>{type}</td>
             <td>{value}</td>
             <td>{maxDiscount}</td>
             <td>{expiredAt}</td>
