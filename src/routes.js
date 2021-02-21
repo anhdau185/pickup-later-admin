@@ -51,6 +51,8 @@ const Campaigns = React.lazy(() => import('./views/campaigns/Campaigns'));
 const Campaign = React.lazy(() => import('./views/campaigns/Campaign'));
 const Locations = React.lazy(() => import('./views/locations/Locations'));
 const Location = React.lazy(() => import('./views/locations/Location'));
+const Buildings = React.lazy(() => import('./views/buildings/Buildings'));
+const Building = React.lazy(() => import('./views/buildings/Building'));
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -107,6 +109,8 @@ const routes = [
   { path: '/campaigns/:id', exact: true,  name: 'Campaign Detail', component: Campaign },
   { path: '/locations', exact: true,  name: 'Locations', component: Locations },
   { path: '/locations/:id', exact: true,  name: 'Location Details', component: Location },
+  { path: '/buildings', exact: true,  name: 'Buildings', component: Buildings },
+  { path: '/buildings/:id', exact: true,  name: 'Building Details', component: Building },
 ];
 
 export default routes;

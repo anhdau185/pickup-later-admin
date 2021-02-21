@@ -79,7 +79,8 @@ DataTable.OrderRow = ({ item }) => {
             <td>{paymentMethod}</td>
             <td>{paymentStatus}</td>
             <td>{totalAmount}</td>
-        </tr>);
+        </tr>
+    );
 };
 
 DataTable.ComboRow = ({ item, rowAction }) => {
@@ -152,7 +153,38 @@ DataTable.LocationRow = ({ item }) => {
             <td>{status}</td>
             <td>{rating}</td>
             <td>{userRatingTotal}</td>
-        </tr>);
+        </tr>
+    );
+};
+
+DataTable.BuildingRow = ({ item }) => {
+    const { id, name, address, lat, lng, phoneNumber, status, rating, userRatingTotal } = item;
+    return (
+        <tr key={id}>
+            <td><Link to={`/buildings/${id}`}>{id}</Link></td>
+            <td>{name}</td>
+            <td>{address}</td>
+            <td>{lat}, {lng}</td>
+            <td>{phoneNumber}</td>
+            <td>{status}</td>
+            <td>{rating}</td>
+            <td>{userRatingTotal}</td>
+        </tr>
+    );
+};
+
+DataTable.OrderDetailRow = ({ item }) => {
+    const { productId, productName, productType, quantity, price, subtotal } = item;
+    return (
+        <tr key={productId}>
+            <td>{productId}</td>
+            <td>{productName}</td>
+            <td>{productType}</td>
+            <td>{quantity}</td>
+            <td>{formatPrice(price)}</td>
+            <td>{formatPrice(subtotal)}</td>
+        </tr>
+    );
 };
 
 export default DataTable;

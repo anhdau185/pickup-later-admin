@@ -1,0 +1,149 @@
+{
+  "id": 1,
+  "name": "Trường Đại học Công nghệ Thông tin - ĐHQG Thành phố Hồ Chí Minh",
+  "address": "Song Hành, khu phố 6, Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam",
+  "lat": 10.869919,
+  "lng": 106.80381,
+  "locations": [
+    {
+      "id": 10,
+      "name": "Quán Cơm Tấm Ngô Quyền 3",
+      "placeId": "ChIJq9eGBEbZdDERknF4FUR8KMw",
+      "address": "35/10 Đường T1, Đông Hoà, Dĩ An, Bình Dương, Vietnam",
+      "lat": 10.874159,
+      "lng": 106.79842,
+      "phoneNumber": "0979156302",
+      "status": "NEW",
+      "rating": 4.2,
+      "userRatingTotal": 13,
+      "mapUrl": "https://maps.google.com/?cid=14711144814665560466",
+      "building": {
+        "id": 0,
+        "name": "",
+        "address": "",
+        "lat": 0,
+        "lng": 0
+      }
+    },
+    {
+      "id": 9,
+      "name": "Căn tin UIT (Nhà phục vụ sinh viên.)",
+      "placeId": "ChIJu03E-RDZdDERGJxcIXqGaZ4",
+      "address": "101 Xa Lộ Hà Nội, Phường Linh Trung, Thủ Đức, Thành Phố Hồ Chí Minh",
+      "lat": 10.869926,
+      "lng": 106.80456,
+      "phoneNumber": "",
+      "status": "REGISTERED",
+      "rating": 4,
+      "userRatingTotal": 1,
+      "mapUrl": "https://maps.google.com/?cid=11414802589651082264",
+      "building": {
+        "id": 0,
+        "name": "",
+        "address": "",
+        "lat": 0,
+        "lng": 0
+      }
+    },
+    {
+      "id": 8,
+      "name": "Quán cơm Bầu Bí",
+      "placeId": "ChIJ5zbok6jYdDERFPnQCKW4s3M",
+      "address": "24/47 đường 621, kp6, P.linh trung, Q, Đông Hoà, Thủ Đức, Thành phố Hồ Chí Minh, Vietnam",
+      "lat": 10.874021,
+      "lng": 106.8072,
+      "phoneNumber": "0938099440",
+      "status": "NEW",
+      "rating": 4,
+      "userRatingTotal": 32,
+      "mapUrl": "https://maps.google.com/?cid=8337210354149947668",
+      "building": {
+        "id": 0,
+        "name": "",
+        "address": "",
+        "lat": 0,
+        "lng": 0
+      }
+    },
+    {
+      "id": 7,
+      "name": "Bolalo Quán",
+      "placeId": "ChIJcws30qDYdDERvxMRXbtHDqQ",
+      "address": "4/9 Tân lập,, Đông Hoà, Dĩ An, Bình Dương, Vietnam",
+      "lat": 10.873715,
+      "lng": 106.8005,
+      "phoneNumber": "0989405467",
+      "status": "NEW",
+      "rating": 5,
+      "userRatingTotal": 1,
+      "mapUrl": "https://maps.google.com/?cid=11821464941939987391",
+      "building": {
+        "id": 0,
+        "name": "",
+        "address": "",
+        "lat": 0,
+        "lng": 0
+      }
+    },
+    {
+      "id": 6,
+      "name": "Quán ăn Miền Tây",
+      "placeId": "ChIJ09SOUS7ZdDER0kJi20oa-Y4",
+      "address": "Đ. Quảng Trường Sáng Tạo, Đông Hoà, Thủ Đức, Bình Dương, Vietnam",
+      "lat": 10.874848,
+      "lng": 106.799446,
+      "phoneNumber": "0939449377",
+      "status": "NEW",
+      "rating": 4.6,
+      "userRatingTotal": 15,
+      "mapUrl": "https://maps.google.com/?cid=10302294531397272274",
+      "building": {
+        "id": 0,
+        "name": "",
+        "address": "",
+        "lat": 0,
+        "lng": 0
+      }
+    },
+    {
+      "id": 4,
+      "name": "Tí Mập Quán",
+      "placeId": "ChIJa7LZL9XZdDERhRuGBstxlEU",
+      "address": "17/14, Tổ 7, Kp 6, Thủ Đức, Thành phố Hồ Chí Minh, Vietnam",
+      "lat": 10.872107,
+      "lng": 106.79898,
+      "phoneNumber": "0382267242",
+      "status": "NEW",
+      "rating": 5,
+      "userRatingTotal": 5,
+      "mapUrl": "https://maps.google.com/?cid=5013757401971956613",
+      "building": {
+        "id": 0,
+        "name": "",
+        "address": "",
+        "lat": 0,
+        "lng": 0
+      }
+    },
+    {
+      "id": 1,
+      "name": "Quán Cơm Út Linh",
+      "placeId": "ChIJHxcHOuLZdDERTYOzXpkEh4E",
+      "address": "Đông Hoà, Dĩ An, Binh Duong, Vietnam",
+      "lat": 10.873103,
+      "lng": 106.80037,
+      "phoneNumber": "096 322 03 65",
+      "status": "READ",
+      "rating": 4.4,
+      "userRatingTotal": 5,
+      "mapUrl": "https://maps.google.com/?cid=9333433809513972557",
+      "building": {
+        "id": 0,
+        "name": "",
+        "address": "",
+        "lat": 0,
+        "lng": 0
+      }
+    }
+  ]
+}

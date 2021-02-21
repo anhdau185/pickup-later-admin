@@ -1,46 +1,46 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { CCard, CCardBody, CCardHeader, CCol, CRow, CInput } from '@coreui/react';
-import { getLocationById } from 'api';
+import { getBuildingById } from 'api';
 import GoogleMap from 'components/GoogleMap';
 
-class Campaign extends React.Component {
+class Building extends React.Component {
     constructor(props) {
         super(props);
-        this.locationId = this.props.match.params.id;
+        this.buildingId = this.props.match.params.id;
         this.state = {
-            location: null
+            building: null
         };
     }
 
     componentDidMount() {
-        getLocationById({
-            locationId: this.locationId,
+        getBuildingById({
+            buildingId: this.buildingId,
             token: this.props.authToken
         })
-            .then(resp => this.setState({ location: resp }))
+            .then(resp => this.setState({ building: resp }))
             .catch(err => console.error(err));
     }
 
     render() {
-        if (this.state.location) {
+        if (this.state.building) {
             return (
                 <div>
                     <CRow>
                         <CCol>
                             <CCard>
-                                <CCardHeader>Location ID: {this.locationId}</CCardHeader>
+                                <CCardHeader>Building ID: {this.buildingId}</CCardHeader>
                                 <CCardBody>
                                     <table className="table table-striped table-hover">
                                         <tbody>
                                             {
-                                                Object.keys(this.state.location).map((key, index) => {
-                                                    if (key !== 'building') {
+                                                Object.keys(this.state.building).map((key, index) => {
+                                                    if (key !== 'locations') {
                                                         return (
                                                             <tr key={index}>
                                                                 <td>{key}:</td>
                                                                 <td>{
-                                                                    <CInput readOnly value={this.state.location[key]} />
+                                                                    <CInput readOnly value={this.state.building[key]} />
                                                                 }</td>
                                                             </tr>
                                                         );
@@ -54,15 +54,12 @@ class Campaign extends React.Component {
                             </CCard>
                         </CCol>
                     </CRow>
-                    {this.state.location.building
-                        ? <GoogleMap
-                            params={{
-                                building: this.state.location.building,
-                                location: [this.state.location, this.state.location.building]
-                            }}
-                        />
-                        : null
-                    }
+                    <GoogleMap
+                        params={{
+                            building: this.state.building,
+                            location: [...this.state.building.locations, this.state.building]
+                        }}
+                    />
                 </div>
             );
         }
@@ -72,6 +69,6 @@ class Campaign extends React.Component {
 }
 
 const mapStateToProps = ({ auth }) => ({ authToken: auth ? auth.token : '' });
-const ConnectedCampaign = connect(mapStateToProps)(Campaign);
+const ConnectedComp = connect(mapStateToProps)(Building);
 
-export default ConnectedCampaign;
+export default ConnectedComp;

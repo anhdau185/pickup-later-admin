@@ -6,7 +6,7 @@ import { Button, Row, Col } from 'react-bootstrap';
 import { getCategoryById, updateCategory } from 'api';
 import ProductSelector from 'components/ProductSelector';
 import DataTable from 'components/DataTable';
-import categoryJson from 'json/category.json';
+// import categoryJson from 'json/category.json';
 
 class Category extends React.Component {
     constructor(props) {

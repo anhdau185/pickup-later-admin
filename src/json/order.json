@@ -1,0 +1,39 @@
+{
+  "id": 106,
+  "transactionNo": "81220-01ES0N0N",
+  "userId": 5,
+  "userName": "Viet Anh",
+  "phoneNumber": "0352305969",
+  "note": "",
+  "totalAmount": 20000,
+  "status": "CANCELED",
+  "cancelReason": "Muốn đổi món",
+  "storeId": "1000",
+  "paymentMethod": "COD",
+  "paymentStatus": "NEW",
+  "orderDetails": [
+    {
+      "productId": 1013,
+      "productName": "Gỏi cuốn",
+      "productType": "Product",
+      "quantity": 1,
+      "price": 20000,
+      "subtotal": 20000
+    }
+  ],
+  "orderAudits": [
+    {
+      "status": "CANCELED",
+      "created_at": 1607413712658
+    },
+    {
+      "status": "RECEIVED",
+      "created_at": 1607413556694
+    },
+    {
+      "status": "NEW",
+      "created_at": 1607413552486
+    }
+  ],
+  "createdAt": 1607413552472
+}
