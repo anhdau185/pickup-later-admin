@@ -1,7 +1,7 @@
 import { schemes, httpMethods, headers } from './staticEntries';
 
 const scheme = schemes.HTTPS;
-const host = 'f6d49fc4a67d.ngrok.io';
+const host = 'ddbb70128df2.ngrok.io';
 const basePath = '/api/v1';
 
 function toQueryString(params) {
@@ -256,6 +256,14 @@ export const getBuildingById = async ({ buildingId, token }) => {
   return data;
 };
 
+export const createBuilding = async ({ buildingData, token }) => {
+  const apiPath = getApiPath('/buildings');
+  let configurations = getConfigurations(httpMethods.POST, buildingData, token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
 export const getVouchers = async ({ page, perPage, token }) => {
   const apiPath = getApiPath('/vouchers', { page, perPage });
   let configurations = getConfigurations(httpMethods.GET, null, token);
@@ -290,6 +298,14 @@ export const getCustomerById = async ({ customerId, token }) => {
 
 export const getDashboardData = async token => {
   const apiPath = getApiPath('/admin/dashboard');
+  let configurations = getConfigurations(httpMethods.GET, null, token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const mapSearch = async ({ keyword, token }) => {
+  const apiPath = getApiPath('/map/search', { keyword });
   let configurations = getConfigurations(httpMethods.GET, null, token);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();

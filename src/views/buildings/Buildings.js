@@ -11,6 +11,7 @@ import {
 } from '@coreui/react';
 import { getBuildings } from 'api';
 import DataTable from 'components/DataTable';
+import { Button, Icon } from 'semantic-ui-react';
 
 const Buildings = ({ authToken }) => {
     const history = useHistory();
@@ -34,9 +35,14 @@ const Buildings = ({ authToken }) => {
             <CRow>
                 <CCol>
                     <CCard>
-                        <CCardHeader>Buildings</CCardHeader>
+                        <CCardHeader>
+                            <Button icon labelPosition="left" color="violet" onClick={() => history.push('/new-building')}>
+                                <Icon name="add" />
+                                New building
+                            </Button>
+                        </CCardHeader>
                         <CCardBody>
-                            <DataTable fields={['ID', 'Name', 'Address', 'Coordinate on Map', 'Phone number', 'Status', 'Rating', 'User Rating Total']}>
+                            <DataTable fields={['ID', 'Name', 'Address', 'Coordinate on Map']}>
                                 {buildings.records.buildings.map(
                                     item => <DataTable.BuildingRow item={item} onRowClick={item => history.push(`/buildings/${item.id}`)} />
                                 )}
