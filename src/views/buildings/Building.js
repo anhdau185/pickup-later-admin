@@ -25,7 +25,7 @@ class Building extends React.Component {
     render() {
         if (this.state.building) {
             return (
-                <div>
+                <>
                     <CRow>
                         <CCol>
                             <CCard>
@@ -60,7 +60,7 @@ class Building extends React.Component {
                             location: [...this.state.building.locations, this.state.building]
                         }}
                     />
-                </div>
+                </>
             );
         }
 

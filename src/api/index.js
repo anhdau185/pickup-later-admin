@@ -1,7 +1,7 @@
 import { schemes, httpMethods, headers } from './staticEntries';
 
 const scheme = schemes.HTTPS;
-const host = '9c467d482d99.ngrok.io';
+const host = 'f6d49fc4a67d.ngrok.io';
 const basePath = '/api/v1';
 
 function toQueryString(params) {
@@ -282,6 +282,14 @@ export const getCustomers = async ({ page, perPage, token }) => {
 
 export const getCustomerById = async ({ customerId, token }) => {
   const apiPath = getApiPath('/customers', customerId);
+  let configurations = getConfigurations(httpMethods.GET, null, token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const getDashboardData = async token => {
+  const apiPath = getApiPath('/admin/dashboard');
   let configurations = getConfigurations(httpMethods.GET, null, token);
   const response = await fetch(apiPath, configurations);
   const data = await response.json();

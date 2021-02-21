@@ -41,7 +41,8 @@ const Orders = ({ authToken }) => {
     useEffect(() => {
         getOrders({
             page,
-            perPage: 100
+            perPage: 100,
+            'created_at': 'DESC'
         }, authToken)
             .then(resp => setOrders(resp.data))
             .catch(err => console.error(err));

@@ -25,7 +25,7 @@ class Location extends React.Component {
     render() {
         if (this.state.location) {
             return (
-                <div>
+                <>
                     <CRow>
                         <CCol>
                             <CCard>
@@ -63,7 +63,7 @@ class Location extends React.Component {
                         />
                         : null
                     }
-                </div>
+                </>
             );
         }
 
