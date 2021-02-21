@@ -9,42 +9,36 @@ import {
     CRow,
     CPagination
 } from '@coreui/react';
-import { getOrders } from 'api';
+import { getCustomers } from 'api';
 import DataTable from 'components/DataTable';
 
-const Order = ({ authToken }) => {
+const Customer = ({ authToken }) => {
     const history = useHistory();
     const queryPage = useLocation().search.match(/page=([0-9]+)/, '');
     const [page, setPage] = useState(queryPage && queryPage[1] ? parseInt(queryPage[1]) : 1);
-    const [orders, setOrders] = useState(null);
+    const [customers, setCustomers] = useState(null);
 
     useEffect(() => {
-        getOrders({
+        getCustomers({
             page,
             perPage: 100,
             token: authToken
         })
-            .then(resp => setOrders(resp))
+            .then(resp => setCustomers(resp))
             .catch(err => console.error(err));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page]);
 
-    if (orders && !orders.error) {
+    if (customers && !customers.error) {
         return (
             <CRow>
                 <CCol>
                     <CCard>
-                        <CCardHeader>Filters</CCardHeader>
+                        <CCardHeader>Customers</CCardHeader>
                         <CCardBody>
-
-                        </CCardBody>
-                    </CCard>
-                    <CCard>
-                        <CCardHeader>Orders</CCardHeader>
-                        <CCardBody>
-                            <DataTable fields={['Transaction no.', 'Username', 'Phone number', 'Note', 'Store ID', 'Status', 'Payment method', 'Payment status', 'Total amount']}>
-                                {orders.records.orders.map(
-                                    item => <DataTable.OrderRow item={item} onRowClick={item => history.push(`/orders/${item.id}`)} />
+                            <DataTable fields={['ID', 'User name', 'Phone number', 'Last login at', 'Status']}>
+                                {customers.records.customers.map(
+                                    item => <DataTable.CustomerRow item={item} onRowClick={item => history.push(`/customers/${item.id}`)} />
                                 )}
                             </DataTable>
                             <CPagination
@@ -52,10 +46,10 @@ const Order = ({ authToken }) => {
                                 onActivePageChange={newPage => {
                                     if (newPage !== page) {
                                         setPage(newPage);
-                                        history.push(`/orders?page=${newPage}`);
+                                        history.push(`/customers?page=${newPage}`);
                                     }
                                 }}
-                                pages={orders ? orders.pages : 1}
+                                pages={customers ? customers.pages : 1}
                                 doubleArrows={false}
                                 align="center"
                             />
@@ -70,6 +64,6 @@ const Order = ({ authToken }) => {
 };
 
 const mapStateToProps = ({ auth }) => ({ authToken: auth ? auth.token : '' });
-const ConnectedComp = connect(mapStateToProps)(Order);
+const ConnectedComp = connect(mapStateToProps)(Customer);
 
 export default ConnectedComp;

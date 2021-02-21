@@ -1,53 +1,40 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { CCard, CCardBody, CCardHeader, CCol, CRow, CInput, CTextarea } from '@coreui/react';
-import { getDateTimeFromMilliseconds } from 'helpers';
 import { Button, Row, Col } from 'react-bootstrap';
-import { getCampaignById } from 'api';
+import { getCustomerById } from 'api';
+import { getDateTimeFromMilliseconds } from 'helpers';
 import DataTable from 'components/DataTable';
-import campaignJson from 'json/campaign.json';
+import customerJson from 'json/customer.json';
 
-class Campaign extends React.Component {
+class Customer extends React.Component {
     constructor(props) {
         super(props);
-        this.campaignId = this.props.match.params.id;
+        this.customerId = this.props.match.params.id;
         this.state = {
-            campaign: campaignJson/* {
-                products: []
-            } */
+            customer: customerJson
         };
     }
 
     componentDidMount() {
-        getCampaignById({
-            campaignId: this.campaignId,
+        getCustomerById({
+            customerId: this.customerId,
             token: this.props.authToken
         })
-            .then(resp => this.setState({ campaign: resp }))
+            .then(resp => this.setState({ customer: resp }))
             .catch(err => console.error(err));
     }
-
-    // getEditableFieldValues() {
-    //     return {
-    //         name: this.state.category.name,
-    //         title: this.state.category.title,
-    //         imageUrl: this.state.category.imageUrl,
-    //         description: this.state.category.description,
-    //         productIds: this.state.category.products.map(({ id }) => id),
-    //         comboIds: this.state.category.combos.map(({ id }) => id)
-    //     };
-    // }
 
     renderFieldValue(key) {
         switch (key) {
             case 'description':
                 return (
                     <CTextarea
-                        value={this.state.campaign['description']}
+                        value={this.state.customer['description']}
                         onChange={e => {
                             this.setState({
-                                campaign: {
-                                    ...this.state.campaign,
+                                customer: {
+                                    ...this.state.customer,
                                     description: e.target.value
                                 }
                             });
@@ -58,14 +45,14 @@ class Campaign extends React.Component {
                 return (
                     <CInput
                         disabled={key === 'id' || key === 'createdAt' || key === 'updatedAt'}
-                        value={key === 'createdAt' || key === 'updatedAt' || key === 'startDate' || key === 'endDate'
-                            ? getDateTimeFromMilliseconds(this.state.campaign[key])
-                            : this.state.campaign[key]
+                        value={key === 'createdAt' || key === 'updatedAt' || key === 'latestLoginAt'
+                            ? getDateTimeFromMilliseconds(this.state.customer[key])
+                            : this.state.customer[key]
                         }
                         onChange={e => {
-                            let newCampaign = { ...this.state.campaign };
-                            newCampaign[key] = e.target.value;
-                            this.setState({ campaign: newCampaign });
+                            let newCustomer = { ...this.state.customer };
+                            newCustomer[key] = e.target.value;
+                            this.setState({ customer: newCustomer });
                         }}
                     />
                 );
@@ -73,18 +60,18 @@ class Campaign extends React.Component {
     }
 
     render() {
-        if (this.state.campaign) {
+        if (this.state.customer) {
             return (
                 <CRow>
                     <CCol>
                         <CCard>
-                            <CCardHeader>campaignId ID: {this.campaignId}</CCardHeader>
+                            <CCardHeader>CustomerId ID: {this.customerId}</CCardHeader>
                             <CCardBody>
                                 <table className="table table-striped table-hover">
                                     <tbody>
                                         {
-                                            Object.keys(this.state.campaign).map((key, index) => {
-                                                if (key !== 'vouchers') {
+                                            Object.keys(this.state.customer).map((key, index) => {
+                                                if (key !== 'orders') {
                                                     return (
                                                         <tr key={index}>
                                                             <td>{key}:</td>
@@ -99,11 +86,11 @@ class Campaign extends React.Component {
                                 </table>
                                 <Row>
                                     <Col>
-                                        <h5>Vouchers issued from this campaign:</h5>
-                                        <DataTable fields={['ID', 'Name', 'Code', 'Value', 'Maximum discount', 'Expired at', 'Available qty']}>
-                                            {this.state.campaign.vouchers.map(
+                                        <h5>Orders:</h5>
+                                        <DataTable fields={['Transaction no.', 'Note', 'Status', 'Payment method', 'Payment status', 'Total amount']}>
+                                            {this.state.customer.orders.map(
                                                 item => (
-                                                    <DataTable.VoucherRow
+                                                    <DataTable.OrderOfCustomerRow
                                                         item={item}
                                                     />
                                                 )
@@ -131,6 +118,6 @@ class Campaign extends React.Component {
 }
 
 const mapStateToProps = ({ auth }) => ({ authToken: auth ? auth.token : '' });
-const ConnectedCampaign = connect(mapStateToProps)(Campaign);
+const ConnectedCustomer = connect(mapStateToProps)(Customer);
 
-export default ConnectedCampaign;
+export default ConnectedCustomer;

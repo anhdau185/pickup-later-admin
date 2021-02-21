@@ -105,7 +105,7 @@ class Store extends React.Component {
                                     <tbody>
                                         {
                                             Object.keys(this.state.store).map((key, index) => {
-                                                if (key !== 'groups') {
+                                                if (key !== 'location' && key !== 'building' && key !== 'groups') {
                                                     return (
                                                         <tr key={index}>
                                                             <td>{key}:</td>

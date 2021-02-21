@@ -55,6 +55,8 @@ const Buildings = React.lazy(() => import('./views/buildings/Buildings'));
 const Building = React.lazy(() => import('./views/buildings/Building'));
 const Vouchers = React.lazy(() => import('./views/vouchers/Vouchers'));
 const Voucher = React.lazy(() => import('./views/vouchers/Voucher'));
+const Customers = React.lazy(() => import('./views/customers/Customers'));
+const Customer = React.lazy(() => import('./views/customers/Customer'));
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -115,6 +117,8 @@ const routes = [
   { path: '/buildings/:id', exact: true,  name: 'Building Details', component: Building },
   { path: '/vouchers', exact: true,  name: 'Vouchers', component: Vouchers },
   { path: '/vouchers/:id', exact: true,  name: 'Voucher Details', component: Voucher },
+  { path: '/customers', exact: true,  name: 'Customers', component: Customers },
+  { path: '/customers/:id', exact: true,  name: 'Voucher Details', component: Customer },
 ];
 
 export default routes;

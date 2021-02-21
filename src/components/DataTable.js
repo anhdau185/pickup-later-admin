@@ -188,4 +188,30 @@ DataTable.OrderDetailRow = ({ item }) => {
     );
 };
 
+DataTable.CustomerRow = ({ item }) => {
+    const { id, userName, phoneNumber, latestLoginAt, status } = item;
+    return (
+        <tr key={id}>
+            <td><Link to={`/customers/${id}`}>{id}</Link></td>
+            <td><Link to={`/customers/${id}`}>{userName}</Link></td>
+            <td>{phoneNumber}</td>
+            <td>{getDateTimeFromMilliseconds(latestLoginAt)}</td>
+            <td>{status}</td>
+        </tr>
+    );
+};
+
+DataTable.OrderOfCustomerRow = ({ item }) => {
+    const { transactionNo, note, totalAmount, status, paymentMethod, paymentStatus } = item;
+    return (
+        <tr key={transactionNo}>
+            <td><Link to={`/orders/${transactionNo}`}>{transactionNo}</Link></td>
+            <td>{note}</td>
+            <td>{status}</td>
+            <td>{paymentMethod}</td>
+            <td>{paymentStatus}</td>
+            <td>{totalAmount}</td>
+        </tr>
+    );
+};
 export default DataTable;

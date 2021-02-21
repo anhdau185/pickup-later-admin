@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 import {
-    CBadge,
     CDropdown,
     CDropdownItem,
     CDropdownMenu,

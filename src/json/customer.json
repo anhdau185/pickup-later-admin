@@ -1,0 +1,69 @@
+{
+  "id": 4,
+  "userName": "An Tang",
+  "phoneNumber": "+84977765121",
+  "latestLoginAt": 1612380652646,
+  "status": "ACTIVE",
+  "orders": [
+      {
+          "id": 124,
+          "transactionNo": "3221-01EXKZVA",
+          "status": "RECEIVED",
+          "note": "abc",
+          "totalAmount": 30000,
+          "totalPriceAmount": 30000,
+          "paymentMethod": "MOMO",
+          "paymentStatus": "NEW",
+          "cancelReason": "",
+          "voucherCode": ""
+      },
+      {
+          "id": 121,
+          "transactionNo": "3221-01EXKYK4",
+          "status": "NEW",
+          "note": "abc",
+          "totalAmount": 5000,
+          "totalPriceAmount": 5000,
+          "paymentMethod": "COD",
+          "paymentStatus": "NEW",
+          "cancelReason": "",
+          "voucherCode": ""
+      },
+      {
+          "id": 120,
+          "transactionNo": "3221-01EXKY78",
+          "status": "NEW",
+          "note": "",
+          "totalAmount": 20000,
+          "totalPriceAmount": 20000,
+          "paymentMethod": "MOMO",
+          "paymentStatus": "NEW",
+          "cancelReason": "",
+          "voucherCode": ""
+      },
+      {
+          "id": 119,
+          "transactionNo": "3221-01EXKXZT",
+          "status": "CANCELED",
+          "note": "",
+          "totalAmount": 15000,
+          "totalPriceAmount": 15000,
+          "paymentMethod": "MOMO",
+          "paymentStatus": "NEW",
+          "cancelReason": "Không thể nhận hàng vào lúc này",
+          "voucherCode": ""
+      },
+      {
+          "id": 118,
+          "transactionNo": "3221-01EXKXQF",
+          "status": "CANCELED",
+          "note": "",
+          "totalAmount": 15000,
+          "totalPriceAmount": 15000,
+          "paymentMethod": "MOMO",
+          "paymentStatus": "NEW",
+          "cancelReason": "Không còn muốn đặt nữa",
+          "voucherCode": ""
+      }
+  ]
+}

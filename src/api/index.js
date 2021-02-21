@@ -271,3 +271,19 @@ export const getVoucherById = async ({ voucherId, token }) => {
   const data = await response.json();
   return data;
 };
+
+export const getCustomers = async ({ page, perPage, token }) => {
+  const apiPath = getApiPath('/customers', { page, perPage });
+  let configurations = getConfigurations(httpMethods.GET, null, token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};
+
+export const getCustomerById = async ({ customerId, token }) => {
+  const apiPath = getApiPath('/customers', customerId);
+  let configurations = getConfigurations(httpMethods.GET, null, token);
+  const response = await fetch(apiPath, configurations);
+  const data = await response.json();
+  return data;
+};

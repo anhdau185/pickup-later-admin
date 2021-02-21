@@ -7,7 +7,7 @@ export default [
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Products']
+    _children: ['Store Management']
   },
   {
     _tag: 'CSidebarNavItem',
@@ -28,6 +28,11 @@ export default [
     _tag: 'CSidebarNavItem',
     name: 'Orders',
     to: '/orders'
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Customers',
+    to: '/customers'
   },
   {
     _tag: 'CSidebarNavDivider'
@@ -51,7 +56,7 @@ export default [
   },
   {
     _tag: 'CSidebarNavTitle',
-    _children: ['Store Menus'],
+    _children: ['System'],
   },
   {
     _tag: 'CSidebarNavItem',
