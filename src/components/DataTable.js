@@ -31,7 +31,7 @@ DataTable.ProductRow = ({ item, rowAction }) => {
     return (
         <tr key={id}>
             <td><Link to={`/products/${id}`}>{id}</Link></td>
-            <td><b>{name}</b></td>
+            <td><Link to={`/products/${id}`}><b>{name}</b></Link></td>
             <td>{title}</td>
             <td>{formatPrice(price)}</td>
             <td>{formatPrice(salePrice)}</td>
@@ -55,7 +55,7 @@ DataTable.CategoryRow = ({ item, rowAction }) => {
     return (
         <tr key={id}>
             <td><Link to={`/categories/${id}`}>{id}</Link></td>
-            <td><b>{name}</b></td>
+            <td><Link to={`/categories/${id}`}><b>{name}</b></Link></td>
             <td>{title}</td>
             {
                 rowAction
@@ -88,7 +88,7 @@ DataTable.ComboRow = ({ item, rowAction }) => {
     return (
         <tr key={id}>
             <td><Link to={`/combos/${id}`}>{id}</Link></td>
-            <td><b>{name}</b></td>
+            <td><Link to={`/combos/${id}`}><b>{name}</b></Link></td>
             <td>{title}</td>
             <td>{formatPrice(price)}</td>
             <td>{formatPrice(salePrice)}</td>
@@ -106,7 +106,7 @@ DataTable.CampaignRow = ({ item, rowAction }) => {
     return (
         <tr key={id}>
             <td><Link to={`/campaigns/${id}`}>{id}</Link></td>
-            <td><b>{name}</b></td>
+            <td><Link to={`/campaigns/${id}`}><b>{name}</b></Link></td>
             <td>{code}</td>
             <td>{issuedQuantity}</td>
             <td>{status}</td>
@@ -123,15 +123,16 @@ DataTable.CampaignRow = ({ item, rowAction }) => {
 };
 
 DataTable.VoucherRow = ({ item, rowAction }) => {
-    const { id, name, code, value, expiredAt, maxDiscount } = item;
+    const { id, name, code, value, expiredAt, maxDiscount, availableQuantity } = item;
     return (
         <tr key={id}>
-            <td><Link to={`/campaigns/${id}`}>{id}</Link></td>
-            <td><b>{name}</b></td>
+            <td><Link to={`/vouchers/${id}`}>{id}</Link></td>
+            <td><Link to={`/vouchers/${id}`}><b>{name}</b></Link></td>
             <td>{code}</td>
             <td>{value}</td>
             <td>{maxDiscount}</td>
             <td>{expiredAt}</td>
+            <td>{availableQuantity}</td>
             {
                 rowAction
                     ? <td onClick={rowAction.action} style={{ cursor: 'pointer', color: '#dc143c', textAlign: 'center' }}><b>{rowAction.name}</b></td>
@@ -146,7 +147,7 @@ DataTable.LocationRow = ({ item }) => {
     return (
         <tr key={id}>
             <td><Link to={`/locations/${id}`}>{id}</Link></td>
-            <td>{name}</td>
+            <td><Link to={`/locations/${id}`}><b>{name}</b></Link></td>
             <td>{address}</td>
             <td>{lat}, {lng}</td>
             <td>{phoneNumber}</td>
@@ -162,7 +163,7 @@ DataTable.BuildingRow = ({ item }) => {
     return (
         <tr key={id}>
             <td><Link to={`/buildings/${id}`}>{id}</Link></td>
-            <td>{name}</td>
+            <td><Link to={`/buildings/${id}`}><b>{name}</b></Link></td>
             <td>{address}</td>
             <td>{lat}, {lng}</td>
             <td>{phoneNumber}</td>
@@ -178,7 +179,7 @@ DataTable.OrderDetailRow = ({ item }) => {
     return (
         <tr key={productId}>
             <td>{productId}</td>
-            <td>{productName}</td>
+            <td><b>{productName}</b></td>
             <td>{productType}</td>
             <td>{quantity}</td>
             <td>{formatPrice(price)}</td>

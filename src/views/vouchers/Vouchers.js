@@ -9,36 +9,36 @@ import {
     CRow,
     CPagination
 } from '@coreui/react';
-import { getBuildings } from 'api';
+import { getVouchers } from 'api';
 import DataTable from 'components/DataTable';
 
-const Buildings = ({ authToken }) => {
+const Vouchers = ({ authToken }) => {
     const history = useHistory();
     const queryPage = useLocation().search.match(/page=([0-9]+)/, '');
     const [page, setPage] = useState(queryPage && queryPage[1] ? parseInt(queryPage[1]) : 1);
-    const [buildings, setBuildings] = useState(null);
+    const [vouchers, setVouchers] = useState(null);
 
     useEffect(() => {
-        getBuildings({
+        getVouchers({
             page,
             perPage: 10,
             token: authToken
         })
-            .then(resp => setBuildings(resp))
+            .then(resp => setVouchers(resp))
             .catch(err => console.error(err));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page]);
 
-    if (buildings && !buildings.error) {
+    if (vouchers && !vouchers.error) {
         return (
             <CRow>
                 <CCol>
                     <CCard>
-                        <CCardHeader>Buildings</CCardHeader>
+                        <CCardHeader>Vouchers</CCardHeader>
                         <CCardBody>
-                            <DataTable fields={['ID', 'Name', 'Address', 'Coordinate on Map', 'Phone number', 'Status', 'Rating', 'User Rating Total']}>
-                                {buildings.records.buildings.map(
-                                    item => <DataTable.BuildingRow item={item} onRowClick={item => history.push(`/buildings/${item.id}`)} />
+                            <DataTable fields={['ID', 'Name', 'Code', 'Value', 'Max. discount', 'Expired at', 'Available qty']}>
+                                {vouchers.records.map(
+                                    item => <DataTable.VoucherRow item={item} onRowClick={item => history.push(`/vouchers/${item.id}`)} />
                                 )}
                             </DataTable>
                             <CPagination
@@ -46,10 +46,10 @@ const Buildings = ({ authToken }) => {
                                 onActivePageChange={newPage => {
                                     if (newPage !== page) {
                                         setPage(newPage);
-                                        history.push(`/buildings?page=${newPage}`);
+                                        history.push(`/vouchers?page=${newPage}`);
                                     }
                                 }}
-                                pages={buildings ? buildings.pages : 1}
+                                pages={vouchers ? vouchers.pages : 1}
                                 doubleArrows={false}
                                 align="center"
                             />
@@ -64,6 +64,6 @@ const Buildings = ({ authToken }) => {
 };
 
 const mapStateToProps = ({ auth }) => ({ authToken: auth ? auth.token : '' });
-const ConnectedComp = connect(mapStateToProps)(Buildings);
+const ConnectedComp = connect(mapStateToProps)(Vouchers);
 
 export default ConnectedComp;

@@ -53,6 +53,8 @@ const Locations = React.lazy(() => import('./views/locations/Locations'));
 const Location = React.lazy(() => import('./views/locations/Location'));
 const Buildings = React.lazy(() => import('./views/buildings/Buildings'));
 const Building = React.lazy(() => import('./views/buildings/Building'));
+const Vouchers = React.lazy(() => import('./views/vouchers/Vouchers'));
+const Voucher = React.lazy(() => import('./views/vouchers/Voucher'));
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
@@ -98,19 +100,21 @@ const routes = [
   { path: '/products', exact: true,  name: 'Products', component: Products },
   { path: '/products/:id', exact: true,  name: 'Product Details', component: Product },
   { path: '/stores', exact: true,  name: 'Stores', component: Stores },
-  { path: '/stores/:id', exact: true,  name: 'Store', component: Store },
+  { path: '/stores/:id', exact: true,  name: 'Store Details', component: Store },
   { path: '/orders', exact: true,  name: 'Orders', component: Orders },
   { path: '/orders/:id', exact: true,  name: 'Order Details', component: Order },
   { path: '/categories', exact: true,  name: 'Categories', component: Categories },
   { path: '/categories/:id', exact: true,  name: 'Category Details', component: Category },
   { path: '/combos', exact: true,  name: 'Combos', component: Combos },
-  { path: '/combos/:id', exact: true,  name: 'Combo Detail', component: Combo },
+  { path: '/combos/:id', exact: true,  name: 'Combo Details', component: Combo },
   { path: '/campaigns', exact: true,  name: 'Campaigns', component: Campaigns },
-  { path: '/campaigns/:id', exact: true,  name: 'Campaign Detail', component: Campaign },
+  { path: '/campaigns/:id', exact: true,  name: 'Campaign Details', component: Campaign },
   { path: '/locations', exact: true,  name: 'Locations', component: Locations },
   { path: '/locations/:id', exact: true,  name: 'Location Details', component: Location },
   { path: '/buildings', exact: true,  name: 'Buildings', component: Buildings },
   { path: '/buildings/:id', exact: true,  name: 'Building Details', component: Building },
+  { path: '/vouchers', exact: true,  name: 'Vouchers', component: Vouchers },
+  { path: '/vouchers/:id', exact: true,  name: 'Voucher Details', component: Voucher },
 ];
 
 export default routes;

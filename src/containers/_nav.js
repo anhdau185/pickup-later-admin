@@ -11,27 +11,22 @@ export default [
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'All products',
+    name: 'Products',
     to: '/products'
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'All combos',
+    name: 'Product combos',
     to: '/combos'
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'All categories',
+    name: 'Categories',
     to: '/categories'
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Store management',
-    to: '/stores'
-  },
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Order management',
+    name: 'Orders',
     to: '/orders'
   },
   {
@@ -60,7 +55,7 @@ export default [
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'All stores',
+    name: 'Stores',
     to: '/stores'
   },
   {

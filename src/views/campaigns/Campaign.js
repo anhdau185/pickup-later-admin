@@ -19,7 +19,7 @@ class Campaign extends React.Component {
     }
 
     componentDidMount() {
-      getCampaignById({
+        getCampaignById({
             campaignId: this.campaignId,
             token: this.props.authToken
         })
@@ -100,7 +100,7 @@ class Campaign extends React.Component {
                                 <Row>
                                     <Col>
                                         <h5>Vouchers issued from this campaign:</h5>
-                                        <DataTable fields={['ID', 'Name', 'Code', 'Value', 'Maximum discount', 'Expired at']}>
+                                        <DataTable fields={['ID', 'Name', 'Code', 'Value', 'Maximum discount', 'Expired at', 'Available qty']}>
                                             {this.state.campaign.vouchers.map(
                                                 item => (
                                                     <DataTable.VoucherRow
@@ -114,25 +114,24 @@ class Campaign extends React.Component {
                                 <Row>
                                     <Col className="text-right mt-3">
                                         <Button
-                                            // onClick={() => {
-                                            //     updateCategory({
-                                            //         categoryId: this.categoryId,
-                                            //         categoryData: this.getEditableFieldValues(),
-                                            //         token: this.props.authToken
-                                            //     })
-                                            //         .then(resp => {
-                                            //             getCategoryById({
-                                            //                 categoryId: this.categoryId,
-                                            //                 token: this.props.authToken
-                                            //             })
-                                            //                 .then(resp => this.setState({ category: resp }))
-                                            //                 .catch(err => console.error(err));
-
-                                            //             console.log(resp);
-                                            //             window.alert('Successfully updated category!');
-                                            //         })
-                                            //         .catch(err => console.error(err));
-                                            // }}
+                                        /* onClick={() => {
+                                            updateCategory({
+                                                categoryId: this.categoryId,
+                                                categoryData: this.getEditableFieldValues(),
+                                                token: this.props.authToken
+                                            })
+                                                .then(resp => {
+                                                    getCategoryById({
+                                                        categoryId: this.categoryId,
+                                                        token: this.props.authToken
+                                                    })
+                                                        .then(resp => this.setState({ category: resp }))
+                                                        .catch(err => console.error(err));
+                                                    console.log(resp);
+                                                    window.alert('Successfully updated category!');
+                                                })
+                                                .catch(err => console.error(err));
+                                        }} */
                                         >
                                             Submit
                                         </Button>

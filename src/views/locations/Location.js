@@ -4,7 +4,7 @@ import { CCard, CCardBody, CCardHeader, CCol, CRow, CInput } from '@coreui/react
 import { getLocationById } from 'api';
 import GoogleMap from 'components/GoogleMap';
 
-class Campaign extends React.Component {
+class Location extends React.Component {
     constructor(props) {
         super(props);
         this.locationId = this.props.match.params.id;
@@ -72,6 +72,6 @@ class Campaign extends React.Component {
 }
 
 const mapStateToProps = ({ auth }) => ({ authToken: auth ? auth.token : '' });
-const ConnectedCampaign = connect(mapStateToProps)(Campaign);
+const ConnectedComp = connect(mapStateToProps)(Location);
 
-export default ConnectedCampaign;
+export default ConnectedComp;
