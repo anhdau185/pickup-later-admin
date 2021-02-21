@@ -43,7 +43,9 @@ DataTable.ProductRow = ({ item, rowAction }) => {
             </td>
             {
                 rowAction
-                    ? <td onClick={rowAction.action} style={{ cursor: 'pointer', color: '#dc143c', textAlign: 'center' }}><b>{rowAction.name}</b></td>
+                    ? <td onClick={rowAction.action} style={{ cursor: 'pointer', color: '#dc143c', textAlign: 'center' }}>
+                        <b>{rowAction.name}</b>
+                    </td>
                     : null
             }
         </tr>
@@ -59,7 +61,9 @@ DataTable.CategoryRow = ({ item, rowAction }) => {
             <td>{title}</td>
             {
                 rowAction
-                    ? <td onClick={rowAction.action} style={{ cursor: 'pointer', color: '#dc143c', textAlign: 'center' }}><b>{rowAction.name}</b></td>
+                    ? <td onClick={rowAction.action} style={{ cursor: 'pointer', color: '#dc143c', textAlign: 'center' }}>
+                        <b>{rowAction.name}</b>
+                    </td>
                     : null
             }
         </tr>
@@ -94,7 +98,9 @@ DataTable.ComboRow = ({ item, rowAction }) => {
             <td>{formatPrice(salePrice)}</td>
             {
                 rowAction
-                    ? <td onClick={rowAction.action} style={{ cursor: 'pointer', color: '#dc143c', textAlign: 'center' }}><b>{rowAction.name}</b></td>
+                    ? <td onClick={rowAction.action} style={{ cursor: 'pointer', color: '#dc143c', textAlign: 'center' }}>
+                        <b>{rowAction.name}</b>
+                    </td>
                     : null
             }
         </tr>
@@ -115,7 +121,9 @@ DataTable.CampaignRow = ({ item, rowAction }) => {
             <td>{description}</td>
             {
                 rowAction
-                    ? <td onClick={rowAction.action} style={{ cursor: 'pointer', color: '#dc143c', textAlign: 'center' }}><b>{rowAction.name}</b></td>
+                    ? <td onClick={rowAction.action} style={{ cursor: 'pointer', color: '#dc143c', textAlign: 'center' }}>
+                        <b>{rowAction.name}</b>
+                    </td>
                     : null
             }
         </tr>
@@ -135,7 +143,9 @@ DataTable.VoucherRow = ({ item, rowAction }) => {
             <td>{availableQuantity}</td>
             {
                 rowAction
-                    ? <td onClick={rowAction.action} style={{ cursor: 'pointer', color: '#dc143c', textAlign: 'center' }}><b>{rowAction.name}</b></td>
+                    ? <td onClick={rowAction.action} style={{ cursor: 'pointer', color: '#dc143c', textAlign: 'center' }}>
+                        <b>{rowAction.name}</b>
+                    </td>
                     : null
             }
         </tr>
@@ -144,6 +154,17 @@ DataTable.VoucherRow = ({ item, rowAction }) => {
 
 DataTable.LocationRow = ({ item }) => {
     const { id, name, address, lat, lng, phoneNumber, status, rating, userRatingTotal } = item;
+    const getStatusColor = status => {
+        switch (status) {
+            case 'NEW':
+                return '#f9b115';
+            case 'REGISTERED':
+                return '#39f';
+            default:
+                return '#888';
+        }
+    };
+
     return (
         <tr key={id}>
             <td><Link to={`/locations/${id}`}>{id}</Link></td>
@@ -151,25 +172,28 @@ DataTable.LocationRow = ({ item }) => {
             <td>{address}</td>
             <td>{lat}, {lng}</td>
             <td>{phoneNumber}</td>
-            <td>{status}</td>
+            <td style={{ color: getStatusColor(status) }}><b>{status}</b></td>
             <td>{rating}</td>
             <td>{userRatingTotal}</td>
         </tr>
     );
 };
 
-DataTable.BuildingRow = ({ item }) => {
-    const { id, name, address, lat, lng, phoneNumber, status, rating, userRatingTotal } = item;
+DataTable.BuildingRow = ({ item, rowAction }) => {
+    const { id, name, address, lat, lng } = item;
     return (
         <tr key={id}>
             <td><Link to={`/buildings/${id}`}>{id}</Link></td>
             <td><Link to={`/buildings/${id}`}><b>{name}</b></Link></td>
             <td>{address}</td>
             <td>{lat}, {lng}</td>
-            <td>{phoneNumber}</td>
-            <td>{status}</td>
-            <td>{rating}</td>
-            <td>{userRatingTotal}</td>
+            {
+                rowAction
+                    ? <td onClick={() => rowAction.action(item)} style={{ cursor: 'pointer', color: '#dc143c', textAlign: 'center' }}>
+                        <b>{rowAction.name}</b>
+                    </td>
+                    : null
+            }
         </tr>
     );
 };
@@ -214,4 +238,5 @@ DataTable.OrderOfCustomerRow = ({ item }) => {
         </tr>
     );
 };
+
 export default DataTable;
