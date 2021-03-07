@@ -31,7 +31,7 @@ const SaleAvenueChart = ({ data }) => {
             options={{
                 title: {
                     display: true,
-                    text: 'Order Stats for the Last Few Days ',
+                    text: 'Sale Avenue and Total Orders for the Last Few Days ',
                     fontSize: 16
                 },
                 legend: {
