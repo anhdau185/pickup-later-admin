@@ -1,7 +1,7 @@
 import { schemes, httpMethods, headers } from './staticEntries';
 
 const scheme = schemes.HTTPS;
-const host = '86f1a7f9b7a4.ngrok.io';
+const host = 'ab28a2c35605.ngrok.io';
 const basePath = '/api/v1';
 
 function toQueryString(params) {
